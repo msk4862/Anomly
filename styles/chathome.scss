@@ -1,0 +1,34 @@
+@import '../styles/variables';
+@import '../styles//utils';
+
+.chat-home {
+    .chat-form {
+        padding: 10px;
+        color: $font-white;
+        background-color: $primary-color;
+        @include box-shadow(#000, 10px);
+
+        img {
+            width: 50px;
+            height: 100%;
+        }
+
+        form {
+            padding: 1rem;
+            input {
+                color: $font-dark;
+                border-radius: 0;
+            }
+
+            .btn {
+                width: 100%;
+                @include btn-secondary($font-white, transparent, 2px);
+            }
+
+            .btn:hover {
+                background-color: $font-white;
+                color: $font-dark;
+            }
+        }
+    }
+}

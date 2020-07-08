@@ -1,0 +1,57 @@
+@import './variables';
+
+.navbar {
+    padding: 1rem 2rem;
+    .nav-item {
+        margin-right: 1.5rem;
+
+        .nav-link:hover {
+            color: $font-dark;
+        }
+    }
+}
+
+.banner {
+    padding: 5.5rem 0;
+    height: 100%;
+
+    img {
+        width: 250px;
+        height: 100%;
+        animation: bounce 2s infinite ease-in-out;
+    }
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-25px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+@-moz-keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-25px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+@-webkit-keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-25px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}

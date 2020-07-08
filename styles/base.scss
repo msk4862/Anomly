@@ -1,0 +1,68 @@
+@import './variables';
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: $background-color;
+    color: $font-light;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    line-height: 1.5;
+}
+
+h1 {
+    font-size: $h1;
+    font-weight: 700;
+}
+h2 {
+    font-size: $h2;
+    font-weight: 600;
+}
+h3 {
+    font-size: $h3;
+}
+h4 {
+    font-size: $h4;
+}
+h5 {
+    font-size: $h5;
+}
+p {
+    font-size: $base-size;
+}
+
+.text-dark {
+    color: $font-dark;
+}
+.text-light {
+    color: $font-light;
+}
+.text-white {
+    color: $font-white;
+}
+a,
+a:hover {
+    color: $font-light;
+    text-decoration: none;
+}
+.btn {
+    border-radius: 0;
+    padding: 10px 1rem;
+    font-weight: 600;
+}
+.btn-primary {
+    background-color: transparent;
+    border-image: linear-gradient(-45deg, $primary-color, $font-light);
+    border-width: 4px;
+    border-image-slice: 1;
+}
+
+.btn:hover {
+    background-color: $font-white;
+    color: $font-dark;
+    border-color: $font-white;
+    border-image: none;
+}

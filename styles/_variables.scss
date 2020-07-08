@@ -1,0 +1,18 @@
+$background-color: #1b262c;
+$primary-color: #0f4c75;
+$secondary-color: #3282b8;
+
+$font-white: #f8f8f8;
+$font-light: #bbe1fa;
+$font-dark: #3282b8;
+
+$base-size: calc(15px + 0.15vh);
+$type-scale: 1.25;
+
+$h5: calc(#{$base-size} * #{$type-scale});
+$h4: calc(#{$h5} * #{$type-scale});
+$h3: calc(#{$h4} * #{$type-scale});
+$h2: calc(#{$h3} * #{$type-scale});
+$h1: calc(#{$h2} * #{$type-scale});
+
+$small: calc(#{$base-size} / #{$type-scale});
