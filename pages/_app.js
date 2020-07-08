@@ -1,8 +1,8 @@
-import Head from 'next/head'
+import Head from "next/head";
 
-import { APP_NAME } from '../utils/Constants'
+import { APP_NAME } from "../utils/Constants";
 // Global styles
-import '../styles/base.scss'
+import "../styles/base.scss";
 
 export default function App({ Component, pageProps }) {
     return (
@@ -12,5 +12,5 @@ export default function App({ Component, pageProps }) {
             </Head>
             <Component {...pageProps} />
         </>
-    )
+    );
 }
