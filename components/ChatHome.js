@@ -1,15 +1,19 @@
-import { useEffect } from "react";
-import io from "socket.io-client";
+import { useState } from "react";
+import Router from "next/router";
 
 import "../styles/chathome.scss";
 
 const ChatHome = () => {
-    useEffect(() => {
-        const socket = io();
-        socket.on("now", (data) => {
-            console.log(data.message);
-        });
-    }, []);
+    const [displayName, setDisplayName] = useState("");
+    const [room, setRoom] = useState("");
+
+    function handleSubmit(event) {
+        event.preventDefault();
+
+        // TODO: Do something
+
+        Router.push("/chat", "/app");
+    }
 
     return (
         <section className="chat-home">
@@ -21,13 +25,17 @@ const ChatHome = () => {
                     <div className="row justify-content-center align-items-center m-0">
                         <img src="/images/chat.png" alt="icon" />
                     </div>
-                    <form className="form">
+                    <form className="form" onSubmit={handleSubmit}>
                         <div className="form-group">
                             <label>Display name</label>
                             <input
                                 className="form-control"
                                 type="text"
                                 name="name"
+                                value={displayName}
+                                onChange={(event) =>
+                                    setDisplayName(event.target.value)
+                                }
                             />
                         </div>
                         <div className="form-group">
@@ -36,6 +44,10 @@ const ChatHome = () => {
                                 className="form-control"
                                 type="text"
                                 name="room"
+                                value={room}
+                                onChange={(event) =>
+                                    setRoom(event.target.value)
+                                }
                             />
                         </div>
 

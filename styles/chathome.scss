@@ -6,7 +6,7 @@
         padding: 10px;
         color: $font-white;
         background-color: $primary-color;
-        @include box-shadow(#000, 10px);
+        @include box-shadow(10px);
 
         img {
             width: 50px;

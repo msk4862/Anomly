@@ -1,0 +1,38 @@
+@import "../styles//variables";
+@import "../styles//utils";
+
+.chat {
+    background-color: $primary-color;
+    // margin: 3rem 1rem;
+    @include box-shadow(10px);
+
+    img {
+        width: 50px;
+        height: 100%;
+    }
+    .btn {
+        @include btn-secondary($font-dark, $font-white);
+        margin: 10px;
+    }
+
+    .chat-box {
+        height: 80vh;
+    }
+
+    .chat-form-container {
+        // background-color: $primary-color;
+        input {
+            width: 100%;
+            padding: 1rem;
+            font-size: $base-size;
+            border: none;
+        }
+        input:focus {
+            border-width: 0;
+        }
+        .btn {
+            padding: 0.5rem 2rem;
+            margin: 0;
+        }
+    }
+}

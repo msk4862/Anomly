@@ -1,0 +1,17 @@
+@import "./variables";
+
+.navbar {
+    padding: 1rem 2rem;
+    .navbar-brand {
+        h1 {
+            font-weight: 500;
+        }
+    }
+    .nav-item {
+        margin-right: 1.5rem;
+
+        .nav-link:hover {
+            color: $font-dark;
+        }
+    }
+}

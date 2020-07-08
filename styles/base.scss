@@ -48,6 +48,12 @@ a:hover {
     color: $font-light;
     text-decoration: none;
 }
+.white-bg {
+    background-color: $font-white;
+}
+.secondary-bg {
+    background-color: $secondary-color;
+}
 .btn {
     border-radius: 0;
     padding: 10px 1rem;
@@ -59,7 +65,12 @@ a:hover {
     border-width: 4px;
     border-image-slice: 1;
 }
-
+.btn-primary {
+    background-color: transparent;
+    border-image: linear-gradient(-45deg, $primary-color, $font-light);
+    border-width: 4px;
+    border-image-slice: 1;
+}
 .btn:hover {
     background-color: $font-white;
     color: $font-dark;

@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import { APP_NAME, SOCAIL_LINKS } from "../utils/Constants";
+import "../styles/navbar.scss";
 
 const Navbar = () => (
     <nav className="navbar navbar-expand-sm">
