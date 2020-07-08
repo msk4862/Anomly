@@ -23,7 +23,7 @@
         // background-color: $primary-color;
         input {
             width: 100%;
-            padding: 1rem;
+            padding: 0.5rem;
             font-size: $base-size;
             border: none;
         }
@@ -31,7 +31,7 @@
             border-width: 0;
         }
         .btn {
-            padding: 0.5rem 2rem;
+            // padding: 10px 2rem 10px 2rem;
             margin: 0;
         }
     }
