@@ -3,20 +3,14 @@ import io from "socket.io-client";
 
 import "../styles/chatpage.scss";
 
-const ChatPage = () => {
+const ChatPage = ({ onSend }) => {
 
     const [message, setMessage] = useState('');
 
-    // useEffect(() => {
-    //     const socket = io();
-    //     socket.on("message", (data) => {
-    //         console.log(data);
-    //     });
-    // }, []);
-
     function handleMessageSend(event) {
         event.preventDefault();
-        console.log(message)
+
+        onSend(message);
         setMessage('');
     }
 
@@ -37,7 +31,17 @@ const ChatPage = () => {
                 {/* Sidebar */}
                 <div className="col-12">
                     <div className="row justify-content-between align-items-center">
-                        <div className="chat-box white-bg col-12">Message</div>
+                        <div className="chat-box white-bg col-12">
+                            <div className="container p-5">
+
+                                <div className="row justify-content-start align-items-center secondary-bg p-3">
+                                    <div className="col-12 col-sm-8">
+                                        <p className="m-0">HGgjas hgu</p>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
                     </div>
 
                     <div className="chat-form-container row justify-content-center align-items-center m-0 mt-2">

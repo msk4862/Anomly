@@ -14,8 +14,9 @@ const PORT = 3000 || process.env.PORT;
 // Run when client connnects
 io.on("connect", socket => {
         
-    // sent to single client
+    /* sent to single client connected client
     socket.emit("message", "Hello");
+    */
 
     // Broasdcast to all user except client
     socket.broadcast.emit("message", "A user joined the chat");
@@ -24,6 +25,12 @@ io.on("connect", socket => {
     socket.on("disconnect", ()=> {
         // sent to all 
         io.emit("message", "user left the chat");
+    })
+
+    // listen chat Message
+    socket.on("chatMessage", (msg)=> {
+        // emit this message to everyone
+        io.emit("message", msg);
     })
 
 });

@@ -1,64 +1,62 @@
-import { useState } from "react";
-import Router from "next/router";
-
+import { useState, useEffect } from "react";
+import io from "socket.io-client";
+import ChatForm from "./ChatForm";
+import ChatPage from "./ChatPage";
 import "../styles/chathome.scss";
 
 const ChatHome = () => {
-    const [displayName, setDisplayName] = useState("");
-    const [room, setRoom] = useState("");
+    const [socket, setSocket] = useState(null)
+    const [user, setUser] = useState(null);    
+    
+    useEffect(() => {
+        var socket = io();
+        setSocket(socket);
+    }, []);
 
-    function handleSubmit(event) {
+    useEffect(() => {
+        if(socket) {
+            initSocket();
+        }
+    }, [socket])
+
+    // handling socket events
+    const initSocket = () => {
+        // listens for incoming message from server
+        socket.on("message", (msg) => {
+            console.log(msg);
+        });
+
+        // socket.on("disconnect", )
+    }
+
+    /*
+        On join from chat form   
+        @params: {name:string, room:string}
+    */
+    const onJoin = (user) => {
+        console.log(user);
+        setUser(user)
+    }
+
+    /*
+        handle message sending by sending message to server
+        @params: message:string
+    */
+    function sendMessage(message) {
         event.preventDefault();
-
-        // TODO: Do something
-
-        Router.push("/chat", "/app");
+        
+        // emit message to server
+        socket.emit("chatMessage", message);
     }
 
     return (
         <section className="chat-home">
-            <div className="row justify-content-center m-0">
-                <h2 className="p-5">Welcome again to Anomly!</h2>
-            </div>
-            <div className="row justify-content-center align-items center m-0">
-                <div className="chat-form col-12 col-sm-4">
-                    <div className="row justify-content-center align-items-center m-0">
-                        <img src="/images/chat.png" alt="icon" />
-                    </div>
-                    <form className="form" onSubmit={handleSubmit}>
-                        <div className="form-group">
-                            <label>Display name</label>
-                            <input
-                                className="form-control"
-                                type="text"
-                                name="name"
-                                value={displayName}
-                                onChange={(event) =>
-                                    setDisplayName(event.target.value)
-                                }
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label>Room name</label>
-                            <input
-                                className="form-control"
-                                type="text"
-                                name="room"
-                                value={room}
-                                onChange={(event) =>
-                                    setRoom(event.target.value)
-                                }
-                            />
-                        </div>
-
-                        <input
-                            className="btn"
-                            type="submit"
-                            value="Join Chat"
-                        />
-                    </form>
-                </div>
-            </div>
+            {
+                !user ?
+                <ChatForm handleSubmit={onJoin}/>
+                :
+                <ChatPage onSend={sendMessage}/>
+            }
         </section>
     );
 };
