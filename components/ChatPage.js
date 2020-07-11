@@ -14,7 +14,7 @@ const ChatPage = ({ onSend }) => {
     }
 
     return (
-        <div className="chat">
+        <div className="chat container">
             <div className="row justify-content-between align-items-center m-0">
                 <div className="col-6 col-sm-4">
                     <img src="/images/chat.png" alt="logo" />
