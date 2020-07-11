@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import "../styles/chatform.scss";
 
 const ChatForm = ({ handleSubmit }) => {
-
     const [name, setName] = useState("");
     const [room, setRoom] = useState("");
 
@@ -13,9 +12,9 @@ const ChatForm = ({ handleSubmit }) => {
         const user = {
             name,
             room,
-        }
-        handleSubmit({user});
-    }
+        };
+        handleSubmit({ user });
+    };
 
     return (
         <div className="chat-form container">
@@ -61,9 +60,8 @@ const ChatForm = ({ handleSubmit }) => {
                     </form>
                 </div>
             </div>
-
         </div>
-    )
-}
+    );
+};
 
 export default ChatForm;

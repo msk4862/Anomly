@@ -5,19 +5,19 @@ import ChatPage from "./ChatPage";
 import "../styles/chathome.scss";
 
 const ChatHome = () => {
-    const [socket, setSocket] = useState(null)
-    const [user, setUser] = useState(null);    
-    
+    const [socket, setSocket] = useState(null);
+    const [user, setUser] = useState(null);
+
     useEffect(() => {
         var socket = io();
         setSocket(socket);
     }, []);
 
     useEffect(() => {
-        if(socket) {
+        if (socket) {
             initSocket();
         }
-    }, [socket])
+    }, [socket]);
 
     // handling socket events
     const initSocket = () => {
@@ -27,7 +27,7 @@ const ChatHome = () => {
         });
 
         // socket.on("disconnect", )
-    }
+    };
 
     /*
         On join from chat form   
@@ -35,8 +35,8 @@ const ChatHome = () => {
     */
     const onJoin = (user) => {
         console.log(user);
-        setUser(user)
-    }
+        setUser(user);
+    };
 
     /*
         handle message sending by sending message to server
@@ -44,19 +44,18 @@ const ChatHome = () => {
     */
     function sendMessage(message) {
         event.preventDefault();
-        
+
         // emit message to server
         socket.emit("chatMessage", message);
     }
 
     return (
         <section className="chat-home">
-            {
-                !user ?
-                <ChatForm handleSubmit={onJoin}/>
-                :
-                <ChatPage onSend={sendMessage}/>
-            }
+            {!user ? (
+                <ChatForm handleSubmit={onJoin} />
+            ) : (
+                <ChatPage onSend={sendMessage} />
+            )}
         </section>
     );
 };

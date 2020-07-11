@@ -7,7 +7,7 @@
     "format": "prettier \"*/**.{js,scss}\" --write",
     "build": "next build",
     "start": "next start",
-    "server": "node server.js"
+    "server": "node server/server.js"
   },
   "dependencies": {
     "@zeit/next-sass": "^1.0.1",
