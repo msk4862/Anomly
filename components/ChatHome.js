@@ -8,6 +8,7 @@ const ChatHome = () => {
     const [socket, setSocket] = useState(null);
     const [user, setUser] = useState(null);
 
+    // Initializing Socket
     useEffect(() => {
         var socket = io();
         setSocket(socket);
@@ -42,12 +43,12 @@ const ChatHome = () => {
         handle message sending by sending message to server
         @params: message:string
     */
-    function sendMessage(message) {
+    const sendMessage = (message) => {
         event.preventDefault();
 
         // emit message to server
         socket.emit("chatMessage", message);
-    }
+    };
 
     return (
         <section className="chat-home">
