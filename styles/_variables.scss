@@ -16,3 +16,4 @@ $h2: calc(#{$h3} * #{$type-scale});
 $h1: calc(#{$h2} * #{$type-scale});
 
 $small: calc(#{$base-size} / #{$type-scale});
+$small-xs: calc(#{$small} / #{$type-scale});
