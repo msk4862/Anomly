@@ -1,0 +1,16 @@
+@import "../styles//variables";
+
+.message {
+    margin-top: 1rem;
+    padding: 5px 10px;
+    background-color: $secondary-color;
+    p {
+        margin-right: 10px;
+        margin-bottom: 0;
+
+        small {
+            margin-right: 5px;
+            font-size: $small-xs;
+        }
+    }
+}

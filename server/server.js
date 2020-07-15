@@ -13,9 +13,8 @@ const PORT = 3000 || process.env.PORT;
 
 // Run when client connnects
 io.on("connect", (socket) => {
-    /* sent to single client connected client
-    socket.emit("message", "Hello");
-    */
+    // sent to single client connected client
+    socket.emit("message", "Welcome to Anomly!");
 
     // Broasdcast to all user except client
     socket.broadcast.emit("message", "A user joined the chat");
