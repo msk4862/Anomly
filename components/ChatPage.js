@@ -1,17 +1,11 @@
-import { useEffect, useState } from "react";
-import io from "socket.io-client";
-
+import ChatMessage from "./ChatMessage";
+import ChatMessageSendForm from "./ChatMessageSendForm";
 import "../styles/chatpage.scss";
 
-const ChatPage = ({ onSend }) => {
-    const [message, setMessage] = useState("");
-
-    function handleMessageSend(event) {
-        event.preventDefault();
-
+const ChatPage = ({ onSend, messages }) => {
+    const handleMessageSend = (message) => {
         onSend(message);
-        setMessage("");
-    }
+    };
 
     return (
         <div className="chat container">
@@ -27,48 +21,27 @@ const ChatPage = ({ onSend }) => {
             </div>
 
             <div className="row secondary-bg m-0 p-2">
-                {/* Sidebar */}
+                {/*TODO: Sidebar */}
+
+                {/* MessageArea */}
                 <div className="col-12">
                     <div className="row justify-content-between align-items-center">
-                        <div className="chat-box white-bg col-12">
-                            <div className="container p-5">
-                                <div className="row justify-content-start align-items-center secondary-bg p-3">
-                                    <div className="col-12 col-sm-8">
-                                        <p className="m-0">HGgjas hgu</p>
-                                    </div>
-                                </div>
-                            </div>
+                        <div className="chat-box white-bg col-12 p-5">
+                            {/* Message */}
+                            {messages.map((msg, index) => {
+                                return (
+                                    <ChatMessage key={index} message={msg} />
+                                );
+                            })}
+                            {/* /Message */}
                         </div>
                     </div>
 
-                    <div className="chat-form-container row justify-content-center align-items-center m-0 mt-2">
-                        <div className="col-12">
-                            <form
-                                className="form row"
-                                onSubmit={handleMessageSend}>
-                                <div className="col-12 col-sm-10 pr-0">
-                                    <input
-                                        className=""
-                                        type="text"
-                                        placeholder="Enter Message"
-                                        autoComplete="off"
-                                        value={message}
-                                        onChange={(e) =>
-                                            setMessage(e.target.value)
-                                        }
-                                    />
-                                </div>
-                                <div className="col">
-                                    <button
-                                        className="btn btn-primary"
-                                        type="submit">
-                                        Send
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                    <ChatMessageSendForm
+                        handleMessageSend={handleMessageSend}
+                    />
                 </div>
+                {/* /MessageArea */}
             </div>
         </div>
     );

@@ -1,33 +1,41 @@
 import { useState, useEffect } from "react";
 import io from "socket.io-client";
+
 import ChatForm from "./ChatForm";
 import ChatPage from "./ChatPage";
+import { SOCKET_EVENTS } from "../utils/Constants";
 import "../styles/chathome.scss";
+
+const SOCKET_URI = "http://localhost:3000";
 
 const ChatHome = () => {
     const [socket, setSocket] = useState(null);
     const [user, setUser] = useState(null);
+    const [messages, setMessages] = useState(["asasas", "asasas"]);
 
     // Initializing Socket
     useEffect(() => {
-        var socket = io();
-        setSocket(socket);
+        initSocket();
     }, []);
 
     useEffect(() => {
-        if (socket) {
-            initSocket();
-        }
-    }, [socket]);
+        console.log(messages);
+    }, [messages]);
 
     // handling socket events
     const initSocket = () => {
+        var socket = io.connect(SOCKET_URI);
+
         // listens for incoming message from server
-        socket.on("message", (msg) => {
-            console.log(msg);
+        socket.on(SOCKET_EVENTS.MESSAGE, (msg) => {
+            setMessages((messages) => [...messages, msg]);
         });
 
-        // socket.on("disconnect", )
+        socket.on("disconnect", () => {
+            console.log("Disconnected");
+        });
+
+        setSocket(socket);
     };
 
     /*
@@ -35,7 +43,6 @@ const ChatHome = () => {
         @params: {name:string, room:string}
     */
     const onJoin = (user) => {
-        console.log(user);
         setUser(user);
     };
 
@@ -55,7 +62,7 @@ const ChatHome = () => {
             {!user ? (
                 <ChatForm handleSubmit={onJoin} />
             ) : (
-                <ChatPage onSend={sendMessage} />
+                <ChatPage onSend={sendMessage} messages={messages} />
             )}
         </section>
     );
