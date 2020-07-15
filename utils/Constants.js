@@ -6,7 +6,12 @@ export const SOCAIL_LINKS = {
     linkedin: "https://www.linkedin.com/in/msk4862/",
 };
 
-export const MESSAGES = {
+export const SOCKET_MESSAGES = {
     welcome: "A user has joined the room",
     disconnect: "A user left has let the room",
+};
+
+export const SOCKET_EVENTS = {
+    MESSAGE: "message",
+    CHAT_MESSAGE: "chatMessage",
 };
