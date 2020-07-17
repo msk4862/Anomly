@@ -22,7 +22,9 @@ const ChatHome = () => {
         console.log(messages);
     }, [messages]);
 
-    // handling socket events
+    /**
+     * Handling socket events
+     */
     const initSocket = () => {
         var socket = io.connect(SOCKET_URI);
 
@@ -52,18 +54,18 @@ const ChatHome = () => {
         setSocket(socket);
     };
 
-    /*
-        On join from chat form   
-        @params: {name:string, room:string}
-    */
+    /**
+     * On join from chat form
+     * @param  {{{name:string, room:string}}} user
+     */
     const onJoin = (user) => {
         setUser(user);
     };
 
-    /*
-        handle message sending by sending message to server
-        @params: message:string
-    */
+    /**
+     * Handles message sending by sending message to server
+     * @param  {String} message
+     */
     const sendMessage = (message) => {
         event.preventDefault();
 
