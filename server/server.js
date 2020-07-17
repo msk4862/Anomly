@@ -9,26 +9,28 @@ const nextApp = next({ dev });
 const nextHandler = nextApp.getRequestHandler();
 
 const PORT = 3000 || process.env.PORT;
-// const MESSAGES = require("./utils/Constants").MESSAGES;
+const { SOCKET_EVENTS, SOCKET_MESSAGES } = require("../utils/Constants");
 
 // Run when client connnects
 io.on("connect", (socket) => {
+    // const { SOCKET_MESSAGES, SOCKET_EVENTS } = SOCKET_CONST;
+
     // sent to single client connected client
-    socket.emit("message", "Welcome to Anomly!");
+    socket.emit(SOCKET_EVENTS.EVENT, SOCKET_MESSAGES.WELCOME);
 
     // Broasdcast to all user except client
-    socket.broadcast.emit("message", "A user joined the chat");
+    socket.broadcast.emit(SOCKET_EVENTS.EVENT, SOCKET_MESSAGES.JOINED);
 
     // Broadcast
     socket.on("disconnect", () => {
         // sent to all
-        io.emit("message", "user left the chat");
+        io.emit(SOCKET_EVENTS.EVENT, SOCKET_MESSAGES.DISCONNECED);
     });
 
     // listen chat Message
-    socket.on("chatMessage", (msg) => {
+    socket.on(SOCKET_EVENTS.CHAT_MESSAGE, (msg) => {
         // emit this message to everyone
-        io.emit("message", msg);
+        io.emit(SOCKET_EVENTS.CHAT_MESSAGE, msg);
     });
 });
 

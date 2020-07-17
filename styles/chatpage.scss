@@ -17,6 +17,7 @@
 
     .chat-box {
         height: 80vh;
+        overflow: scroll;
         color: $font-white;
     }
 }

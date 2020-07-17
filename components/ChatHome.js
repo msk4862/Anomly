@@ -11,7 +11,7 @@ const SOCKET_URI = "http://localhost:3000";
 const ChatHome = () => {
     const [socket, setSocket] = useState(null);
     const [user, setUser] = useState(null);
-    const [messages, setMessages] = useState(["asasas", "asasas"]);
+    const [messages, setMessages] = useState([]);
 
     // Initializing Socket
     useEffect(() => {
@@ -27,8 +27,22 @@ const ChatHome = () => {
         var socket = io.connect(SOCKET_URI);
 
         // listens for incoming message from server
-        socket.on(SOCKET_EVENTS.MESSAGE, (msg) => {
-            setMessages((messages) => [...messages, msg]);
+
+        // 1. event message
+        socket.on(SOCKET_EVENTS.EVENT, (msg) => {
+            const message = {
+                type: SOCKET_EVENTS.EVENT,
+                content: msg,
+            };
+            setMessages((messages) => [...messages, message]);
+        });
+        // 2. chat message
+        socket.on(SOCKET_EVENTS.CHAT_MESSAGE, (msg) => {
+            const message = {
+                type: SOCKET_EVENTS.CHAT_MESSAGE,
+                content: msg,
+            };
+            setMessages((messages) => [...messages, message]);
         });
 
         socket.on("disconnect", () => {
@@ -54,7 +68,7 @@ const ChatHome = () => {
         event.preventDefault();
 
         // emit message to server
-        socket.emit("chatMessage", message);
+        socket.emit(SOCKET_EVENTS.CHAT_MESSAGE, message);
     };
 
     return (
