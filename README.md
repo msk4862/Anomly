@@ -1,6 +1,6 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 <br />
-[![HitCount](http://hits.dwyl.com/msk4862/Anomly.svg)](http://hits.dwyl.com/msk4862/Anomly)
+[![HitCount](https://hit-badger.glitch.me/badge?page_id=msk4862.Anomly.id)
 
 ## Getting Started
 
