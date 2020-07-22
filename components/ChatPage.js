@@ -1,9 +1,15 @@
+import { useRef } from "react";
+
 import ChatMessage from "./ChatMessage";
 import ChatMessageSendForm from "./ChatMessageSendForm";
+import ChatSidebar from "./ChatSidebar";
 import "../styles/chatpage.scss";
 
 const ChatPage = ({ onSend, messages }) => {
+    const ChatContainerEndRef = useRef(null);
+
     const handleMessageSend = (message) => {
+        ChatContainerEndRef.current.scrollIntoView({ behavior: "smooth" });
         onSend(message);
     };
 
@@ -20,11 +26,12 @@ const ChatPage = ({ onSend, messages }) => {
                 />
             </div>
 
-            <div className="row secondary-bg m-0 p-2">
-                {/*TODO: Sidebar */}
+            <div className="row justify-centent-between align-items-start secondary-bg  m-0 p-2">
+                {/*Sidebar */}
+                <ChatSidebar />
 
                 {/* MessageArea */}
-                <div className="col-12">
+                <div className="col-sm-10">
                     <div className="row justify-content-between align-items-center">
                         <div className="chat-box white-bg col-12 p-5">
                             {/* Message */}
@@ -34,6 +41,8 @@ const ChatPage = ({ onSend, messages }) => {
                                 );
                             })}
                             {/* /Message */}
+
+                            <div ref={ChatContainerEndRef} />
                         </div>
                     </div>
 

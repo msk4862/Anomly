@@ -1,15 +1,21 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 import "../styles/chatmessagesendform.scss";
 
 const ChatMessageSendForm = ({ handleMessageSend }) => {
     const [message, setMessage] = useState("");
+    const chatInputRef = useRef(null);
+
+    useEffect(() => {
+        chatInputRef.current.focus();
+    });
 
     const onSend = (event) => {
         event.preventDefault();
 
         handleMessageSend(message);
         setMessage("");
+        chatInputRef.current.focus();
     };
 
     return (
@@ -18,7 +24,7 @@ const ChatMessageSendForm = ({ handleMessageSend }) => {
                 <form className="form row" onSubmit={onSend}>
                     <div className="col-12 col-sm-10 pr-0">
                         <input
-                            className=""
+                            ref={chatInputRef}
                             type="text"
                             placeholder="Enter Message"
                             autoComplete="off"

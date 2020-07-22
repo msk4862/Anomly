@@ -28,20 +28,20 @@ const ChatHome = () => {
     const initSocket = () => {
         var socket = io.connect(SOCKET_URI);
 
+        const { CHAT_BOT, CHAT_MESSAGE } = SOCKET_EVENTS;
         // listens for incoming message from server
-
         // 1. event message
-        socket.on(SOCKET_EVENTS.EVENT, (msg) => {
+        socket.on(CHAT_BOT, (msg) => {
             const message = {
-                type: SOCKET_EVENTS.EVENT,
+                type: CHAT_BOT,
                 content: msg,
             };
             setMessages((messages) => [...messages, message]);
         });
         // 2. chat message
-        socket.on(SOCKET_EVENTS.CHAT_MESSAGE, (msg) => {
+        socket.on(CHAT_MESSAGE, (msg) => {
             const message = {
-                type: SOCKET_EVENTS.CHAT_MESSAGE,
+                type: CHAT_MESSAGE,
                 content: msg,
             };
             setMessages((messages) => [...messages, message]);
