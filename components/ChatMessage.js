@@ -6,10 +6,10 @@ const ChatMessage = ({ message }) => {
         return (
             <div className="message">
                 <p>
-                    <small>Shaoib</small>
-                    <small>9:15 A.M.</small>
+                    <small>{message.user}</small>
+                    <small>{message.time}</small>
                 </p>
-                <p>{message.content}</p>
+                <p>{message.text}</p>
             </div>
         );
     };
@@ -17,14 +17,14 @@ const ChatMessage = ({ message }) => {
     const renderEventMessage = () => {
         return (
             <div className="message">
-                <p>{message.content}</p>
+                <p>{message.text}</p>
             </div>
         );
     };
 
     return (
         <>
-            {message.type === SOCKET_EVENTS.EVENT
+            {message.type === SOCKET_EVENTS.CHAT_BOT
                 ? renderEventMessage()
                 : renderChatMessage()}
         </>
