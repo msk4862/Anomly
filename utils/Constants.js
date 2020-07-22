@@ -15,7 +15,7 @@ module.exports = {
     },
 
     SOCKET_EVENTS: {
-        EVENT: "event",
+        CHAT_BOT: "chatbot",
         CHAT_MESSAGE: "chatMessage",
     },
 };

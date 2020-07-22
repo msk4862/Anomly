@@ -13,24 +13,25 @@ const { SOCKET_EVENTS, SOCKET_MESSAGES } = require("../utils/Constants");
 
 // Run when client connnects
 io.on("connect", (socket) => {
-    // const { SOCKET_MESSAGES, SOCKET_EVENTS } = SOCKET_CONST;
+    const { CHAT_BOT, CHAT_MESSAGE } = SOCKET_EVENTS;
+    const { WELCOME, JOINED, DISCONNECED } = SOCKET_MESSAGES;
 
     // sent to single client connected client
-    socket.emit(SOCKET_EVENTS.EVENT, SOCKET_MESSAGES.WELCOME);
+    socket.emit(CHAT_BOT, WELCOME);
 
     // Broasdcast to all user except client
-    socket.broadcast.emit(SOCKET_EVENTS.EVENT, SOCKET_MESSAGES.JOINED);
+    socket.broadcast.emit(CHAT_BOT, JOINED);
 
     // Broadcast
     socket.on("disconnect", () => {
         // sent to all
-        io.emit(SOCKET_EVENTS.EVENT, SOCKET_MESSAGES.DISCONNECED);
+        io.emit(CHAT_BOT, DISCONNECED);
     });
 
     // listen chat Message
-    socket.on(SOCKET_EVENTS.CHAT_MESSAGE, (msg) => {
+    socket.on(CHAT_MESSAGE, (msg) => {
         // emit this message to everyone
-        io.emit(SOCKET_EVENTS.CHAT_MESSAGE, msg);
+        io.emit(CHAT_MESSAGE, msg);
     });
 });
 
