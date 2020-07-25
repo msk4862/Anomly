@@ -8,22 +8,31 @@ const nextApp = next({ dev });
 const nextHandler = nextApp.getRequestHandler();
 const { SOCKET_EVENTS, SOCKET_MESSAGES } = require("../utils/Constants");
 const formatMessage = require("../utils/MessageUtil");
+const { addUser, getCurrentUser } = require("./user");
 
 const PORT = 3000 || process.env.PORT;
 
 // Run when client connnects
 io.on("connect", (socket) => {
-    const { CHAT_BOT, CHAT_MESSAGE } = SOCKET_EVENTS;
+    const { CHAT_BOT, CHAT_MESSAGE, JOIN_ROOM, DISCONNECT } = SOCKET_EVENTS;
     const { WELCOME, JOINED, DISCONNECED } = SOCKET_MESSAGES;
 
-    // sent to single client connected client
-    socket.emit(CHAT_BOT, formatMessage(CHAT_BOT, WELCOME));
+    // joining room
+    socket.on(JOIN_ROOM, ({ username, room }) => {
+        socket.join(room);
+        addUser(socket.id, username, room);
 
-    // Broasdcast to all user except client
-    socket.broadcast.emit(CHAT_BOT, formatMessage(CHAT_BOT, JOINED));
+        // sent to single client connected client
+        socket.emit(CHAT_BOT, formatMessage(CHAT_BOT, WELCOME));
+
+        // Broasdcast to all user except client when a user is joined
+        socket.broadcast
+            .to(room)
+            .emit(CHAT_BOT, formatMessage(CHAT_BOT, JOINED));
+    });
 
     // Broadcast
-    socket.on("disconnect", () => {
+    socket.on(DISCONNECT, () => {
         // sent to all
         io.emit(CHAT_BOT, formatMessage(CHAT_BOT, DISCONNECED));
     });
