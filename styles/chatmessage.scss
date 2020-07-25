@@ -1,16 +1,29 @@
 @import "../styles//variables";
 
-.message {
+.chat-message,
+.bot-message {
     margin-top: 1rem;
     padding: 5px 10px;
-    background-color: $secondary-color;
+    border-radius: 10px;
     p {
+        color: #1b262c;
         margin-right: 10px;
         margin-bottom: 0;
 
         small {
+            color: $primary-color;
             margin-right: 5px;
             font-size: $small-xs;
         }
     }
+}
+
+.chat-message {
+    background-color: $font-light;
+}
+.bot-message {
+    padding-top: 8px;
+    padding-bottom: 8px;
+    margin: 0 5rem;
+    background-color: #7fdbda;
 }

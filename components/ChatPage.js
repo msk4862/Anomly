@@ -5,9 +5,10 @@ import ChatMessageSendForm from "./ChatMessageSendForm";
 import ChatSidebar from "./ChatSidebar";
 import "../styles/chatpage.scss";
 
-const ChatPage = ({ onSend, messages }) => {
+const ChatPage = ({ onSend, userInfo, messages }) => {
     const ChatContainerEndRef = useRef(null);
 
+    console.log(userInfo);
     const handleMessageSend = (message) => {
         ChatContainerEndRef.current.scrollIntoView({ behavior: "smooth" });
         onSend(message);
@@ -28,7 +29,7 @@ const ChatPage = ({ onSend, messages }) => {
 
             <div className="row justify-centent-between align-items-start secondary-bg  m-0 p-2">
                 {/*Sidebar */}
-                <ChatSidebar />
+                <ChatSidebar userInfo={userInfo} />
 
                 {/* MessageArea */}
                 <div className="col-sm-10">

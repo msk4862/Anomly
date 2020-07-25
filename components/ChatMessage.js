@@ -4,7 +4,7 @@ import "../styles/chatmessage.scss";
 const ChatMessage = ({ message }) => {
     const renderChatMessage = () => {
         return (
-            <div className="message">
+            <div className="chat-message">
                 <p>
                     <small>{message.user}</small>
                     <small>{message.time}</small>
@@ -16,7 +16,7 @@ const ChatMessage = ({ message }) => {
 
     const renderEventMessage = () => {
         return (
-            <div className="message">
+            <div className="bot-message text-center">
                 <p>{message.text}</p>
             </div>
         );

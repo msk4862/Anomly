@@ -29,6 +29,7 @@ const ChatHome = () => {
         var socket = io.connect(SOCKET_URI);
 
         const { CHAT_BOT, CHAT_MESSAGE } = SOCKET_EVENTS;
+
         // listens for incoming message from server
         // 1. bot messages
         socket.on(CHAT_BOT, (msg) => {
@@ -58,10 +59,15 @@ const ChatHome = () => {
 
     /**
      * On join from chat form
-     * @param  {{{name:string, room:string}}} user
+     * @param  {Object: {name:string, room:string}} user
      */
     const onJoin = (user) => {
         setUser(user);
+
+        const { username, room } = user;
+
+        // join room
+        socket.emit(SOCKET_EVENTS.JOIN_ROOM, { username, room });
     };
 
     /**
@@ -80,7 +86,11 @@ const ChatHome = () => {
             {!user ? (
                 <ChatForm handleSubmit={onJoin} />
             ) : (
-                <ChatPage onSend={sendMessage} messages={messages} />
+                <ChatPage
+                    onSend={sendMessage}
+                    userInfo={user}
+                    messages={messages}
+                />
             )}
         </section>
     );
