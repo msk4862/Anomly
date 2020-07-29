@@ -17,16 +17,16 @@ const ChatForm = ({ handleSubmit }) => {
     };
 
     return (
-        <div className="chat-form container">
-            <div className="row justify-content-center m-0">
+        <div className="chat-form-container container">
+            <div className="row justify-content-center m-0 text-center">
                 <h2 className="p-5">Welcome again to Anomly!</h2>
             </div>
             <div className="row justify-content-center align-items center m-0">
-                <div className="chat-form col-12 col-sm-4">
+                <div className="chat-form col-10 col-sm-6 col-md-4 p-0">
                     <div className="row justify-content-center align-items-center m-0">
                         <img src="/images/chat.png" alt="icon" />
                     </div>
-                    <form className="form" onSubmit={onJoin}>
+                    <form onSubmit={onJoin}>
                         <div className="form-group">
                             <label>Display name</label>
                             <input

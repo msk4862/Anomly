@@ -3,6 +3,7 @@ import { useRef } from "react";
 import ChatMessage from "./ChatMessage";
 import ChatMessageSendForm from "./ChatMessageSendForm";
 import ChatSidebar from "./ChatSidebar";
+import { APP_NAME } from "../utils/Constants";
 import "../styles/chatpage.scss";
 
 const ChatPage = ({ onSend, userInfo, roomUsers, messages, onLeave }) => {
@@ -18,10 +19,11 @@ const ChatPage = ({ onSend, userInfo, roomUsers, messages, onLeave }) => {
     };
 
     return (
-        <div className="chat container">
-            <div className="row justify-content-between align-items-center m-0">
-                <div className="col-6 col-sm-4">
+        <div className="chat-page container">
+            <div className="row justify-content-start text-start align-items-center m-0">
+                <div className="col">
                     <img src="/images/chat.png" alt="logo" />
+                    <h3>{APP_NAME}</h3>
                 </div>
                 <input
                     className="btn btn-primary ml-auto"
@@ -31,14 +33,14 @@ const ChatPage = ({ onSend, userInfo, roomUsers, messages, onLeave }) => {
                 />
             </div>
 
-            <div className="row justify-centent-between align-items-start secondary-bg  m-0 p-2">
+            <div className="row justify-centent-between align-items-start secondary-bg  m-0">
                 {/*Sidebar */}
                 <ChatSidebar userInfo={userInfo} roomUsers={roomUsers} />
 
                 {/* MessageArea */}
-                <div className="col-sm-10">
+                <div className="col-sm-9">
                     <div className="row justify-content-between align-items-center">
-                        <div className="chat-box white-bg col-12 p-5">
+                        <div className="chat-box white-bg col-12">
                             {/* Message */}
                             {messages.map((msg, index) => {
                                 return (
@@ -50,12 +52,15 @@ const ChatPage = ({ onSend, userInfo, roomUsers, messages, onLeave }) => {
                             <div ref={ChatContainerEndRef} />
                         </div>
                     </div>
-
+                </div>
+                {/* /MessageArea */}
+            </div>
+            <div className="row">
+                <div className="col">
                     <ChatMessageSendForm
                         handleMessageSend={handleMessageSend}
                     />
                 </div>
-                {/* /MessageArea */}
             </div>
         </div>
     );

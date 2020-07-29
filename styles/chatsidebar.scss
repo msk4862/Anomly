@@ -1,5 +1,9 @@
+@import "./variables";
+
 .chat-sidebar {
+    color: $font-white;
     ul {
         list-style: none;
+        overflow-y: auto;
     }
 }

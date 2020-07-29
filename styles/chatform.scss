@@ -1,32 +1,39 @@
 @import "../styles/variables";
 @import "../styles//utils";
 
-.chat-form {
-    padding: 10px;
+.chat-form-container {
     color: $font-white;
-    background-color: $primary-color;
-    @include box-shadow(10px);
 
     img {
         width: 50px;
         height: 100%;
     }
 
-    form {
-        padding: 1rem;
-        input {
-            color: $font-dark;
-            border-radius: 0;
+    .chat-form {
+        background-color: $primary-color;
+        @include box-shadow(10px);
+
+        > div {
+            background-color: $secondary-color;
+            padding: 0.25rem;
         }
 
-        .btn {
-            width: 100%;
-            @include btn-secondary($font-white, transparent, 2px);
-        }
+        form {
+            padding: 2rem 1.375rem;
+            input {
+                color: $font-dark;
+                border-radius: 0;
+            }
 
-        .btn:hover {
-            background-color: $font-white;
-            color: $font-dark;
+            .btn {
+                width: 100%;
+                @include btn-secondary($font-white, transparent, 2px);
+            }
+
+            .btn:hover {
+                background-color: $font-white;
+                color: $font-dark;
+            }
         }
     }
 }

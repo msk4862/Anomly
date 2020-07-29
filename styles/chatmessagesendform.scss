@@ -1,18 +1,22 @@
 @import "../styles//variables";
 
-form {
-    // background-color: $primary-color;
-    input {
-        width: 100%;
-        padding: 0.5rem;
-        font-size: $base-size;
-        border: none;
-    }
-    input:focus {
-        border-width: 0;
-    }
-    .btn {
-        // padding: 10px 2rem 10px 2rem;
-        margin: 0;
+.chatsend-form {
+    background-color: $primary-color;
+    padding: 0.5rem 0;
+    form {
+        // background-color: $primary-color;
+        input {
+            width: 100%;
+            padding: 0.5rem;
+            font-size: $base-size;
+            border: none;
+        }
+        input:focus {
+            border-width: 0;
+        }
+        .btn {
+            // padding: 5px 2rem 5px 2rem;
+            margin: 0;
+        }
     }
 }

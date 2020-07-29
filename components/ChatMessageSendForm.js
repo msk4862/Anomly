@@ -19,26 +19,27 @@ const ChatMessageSendForm = ({ handleMessageSend }) => {
     };
 
     return (
-        <div className="row justify-content-center align-items-center m-0 mt-2">
-            <div className="col-12">
-                <form className="form row" onSubmit={onSend}>
-                    <div className="col-12 col-sm-10 pr-0">
-                        <input
-                            ref={chatInputRef}
-                            type="text"
-                            placeholder="Enter Message"
-                            autoComplete="off"
-                            value={message}
-                            onChange={(e) => setMessage(e.target.value)}
-                        />
-                    </div>
-                    <div className="col">
-                        <button className="btn btn-primary" type="submit">
-                            Send
-                        </button>
-                    </div>
-                </form>
-            </div>
+        <div className="chatsend-form">
+            <form
+                className="row justify-content-center align-items-center"
+                onSubmit={onSend}>
+                <div className="col-10">
+                    <input
+                        className="form-control"
+                        ref={chatInputRef}
+                        type="text"
+                        placeholder="Enter Message"
+                        autoComplete="off"
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                    />
+                </div>
+                <div className="col-*">
+                    <button className="btn btn-primary" type="submit">
+                        Send
+                    </button>
+                </div>
+            </form>
         </div>
     );
 };

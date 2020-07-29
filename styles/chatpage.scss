@@ -1,23 +1,35 @@
 @import "../styles//variables";
 @import "../styles//utils";
 
-.chat {
-    background-color: $primary-color;
-    // margin: 3rem 1rem;
+.chat-page {
     @include box-shadow(10px);
+    padding: 0;
+
+    > div:first-child {
+        background-color: $primary-color;
+    }
 
     img {
         width: 50px;
         height: 100%;
     }
+    h3 {
+        display: inline;
+        margin: 3px 0 2px 10px;
+    }
+
     .btn {
         @include btn-secondary($font-dark, $font-white);
         margin: 10px;
     }
 
     .chat-box {
+        padding-top: 2rem;
+        padding-left: 2.15rem;
+        padding-right: 2.15rem;
+        padding-bottom: 1rem;
         height: 80vh;
-        overflow: scroll;
+        overflow-y: auto;
         color: $font-white;
     }
 }
