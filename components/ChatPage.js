@@ -5,13 +5,16 @@ import ChatMessageSendForm from "./ChatMessageSendForm";
 import ChatSidebar from "./ChatSidebar";
 import "../styles/chatpage.scss";
 
-const ChatPage = ({ onSend, userInfo, messages }) => {
+const ChatPage = ({ onSend, userInfo, roomUsers, messages, onLeave }) => {
     const ChatContainerEndRef = useRef(null);
 
-    console.log(userInfo);
     const handleMessageSend = (message) => {
         ChatContainerEndRef.current.scrollIntoView({ behavior: "smooth" });
         onSend(message);
+    };
+
+    const handleLeave = () => {
+        onLeave();
     };
 
     return (
@@ -24,12 +27,13 @@ const ChatPage = ({ onSend, userInfo, messages }) => {
                     className="btn btn-primary ml-auto"
                     type="button"
                     value="Leave Room"
+                    onClick={handleLeave}
                 />
             </div>
 
             <div className="row justify-centent-between align-items-start secondary-bg  m-0 p-2">
                 {/*Sidebar */}
-                <ChatSidebar userInfo={userInfo} />
+                <ChatSidebar userInfo={userInfo} roomUsers={roomUsers} />
 
                 {/* MessageArea */}
                 <div className="col-sm-10">

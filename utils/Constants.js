@@ -18,6 +18,7 @@ module.exports = {
         JOIN_ROOM: "joinRoom",
         CHAT_BOT: "chatbot",
         CHAT_MESSAGE: "chatMessage",
+        ROOM_USERS: "roomUsers",
         DISCONNECT: "disconnect",
     },
 };

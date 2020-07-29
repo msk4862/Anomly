@@ -3,17 +3,17 @@ import { useState } from "react";
 import "../styles/chatform.scss";
 
 const ChatForm = ({ handleSubmit }) => {
-    const [name, setName] = useState("");
+    const [username, setUsername] = useState("");
     const [room, setRoom] = useState("");
 
     const onJoin = (event) => {
         event.preventDefault();
 
         const user = {
-            name,
+            username,
             room,
         };
-        handleSubmit({ user });
+        handleSubmit(user);
     };
 
     return (
@@ -33,9 +33,9 @@ const ChatForm = ({ handleSubmit }) => {
                                 className="form-control"
                                 type="text"
                                 name="name"
-                                value={name}
+                                value={username}
                                 onChange={(event) =>
-                                    setName(event.target.value)
+                                    setUsername(event.target.value)
                                 }
                             />
                         </div>
