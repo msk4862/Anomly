@@ -4,6 +4,7 @@ import "../styles/chatmessagesendform.scss";
 
 const ChatMessageSendForm = ({ handleMessageSend }) => {
     const [message, setMessage] = useState("");
+    const [error, setError] = useState(null);
     const chatInputRef = useRef(null);
 
     useEffect(() => {
@@ -13,9 +14,33 @@ const ChatMessageSendForm = ({ handleMessageSend }) => {
     const onSend = (event) => {
         event.preventDefault();
 
-        handleMessageSend(message);
-        setMessage("");
-        chatInputRef.current.focus();
+        if (message != "") {
+            handleMessageSend(message);
+            setMessage("");
+            chatInputRef.current.focus();
+        } else {
+            validate(message);
+        }
+    };
+
+    /**
+     * Validating form fields
+     * @param  {String} value
+     */
+    const validate = (value) => {
+        let messageError = null;
+        if (value === "") {
+            messageError = "Type your message!";
+        }
+        setError(messageError);
+    };
+    /**
+     * adds error class
+     * @param  {String} error
+     */
+    const addErrorClass = (error) => {
+        if (error) return "error";
+        return "";
     };
 
     return (
@@ -23,7 +48,7 @@ const ChatMessageSendForm = ({ handleMessageSend }) => {
             <form
                 className="row justify-content-center align-items-center"
                 onSubmit={onSend}>
-                <div className="col-10">
+                <div className={`col-10 ${addErrorClass(error)}`}>
                     <input
                         className="form-control"
                         ref={chatInputRef}

@@ -44,6 +44,15 @@ p {
 .text-white {
     color: $font-white;
 }
+.error {
+    color: $font-error;
+
+    input[type="text"] {
+        border: 2px solid $font-error;
+        outline: none;
+    }
+}
+
 a,
 a:hover {
     color: $font-light;
@@ -92,21 +101,21 @@ a:hover {
 
 ::-webkit-scrollbar {
     width: 0.475rem;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-    background-color: transparent; 
-  }
-   
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-    background-color: $secondary-color; 
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background-color: $secondary-color;
     border-radius: 10px;
     @include box-shadow(5px);
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-    background: $font-light; 
-  }
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: $font-light;
+}

@@ -3,17 +3,66 @@ import { useState } from "react";
 import "../styles/chatform.scss";
 
 const ChatForm = ({ handleSubmit }) => {
+    const minUserNameLength = 6;
+
     const [username, setUsername] = useState("");
     const [room, setRoom] = useState("");
+    const [errors, setErrors] = useState({
+        usernameErr: null,
+        roomErr: null,
+    });
 
     const onJoin = (event) => {
         event.preventDefault();
 
-        const user = {
-            username,
-            room,
-        };
-        handleSubmit(user);
+        if (username != "" && room != "") {
+            const user = {
+                username,
+                room,
+            };
+            handleSubmit(user);
+        } else {
+            // if both the field are null
+            if (!errors.usernameErr && !errors.roomErr) {
+                setErrors({
+                    usernameErr: "Username can't be empty!",
+                    roomErr: "Room name can't be empty!",
+                });
+            }
+        }
+    };
+    /**
+     * Validating form fields
+     * @param  {String} {name
+     * @param  {String} value}
+     */
+    const validate = ({ name, value }) => {
+        let { usernameErr, roomErr } = errors;
+
+        switch (name) {
+            case "username":
+                usernameErr =
+                    value.length >= minUserNameLength
+                        ? null
+                        : "Username is too short!";
+                break;
+            case "room":
+                roomErr = value.length > 0 ? null : "Room name can't be empty!";
+                break;
+        }
+        setErrors({
+            usernameErr,
+            roomErr,
+        });
+    };
+
+    /**
+     * add error class if error exist
+     * @param  {String} error
+     */
+    const addErrorClass = (error) => {
+        if (error) return "error";
+        return "";
     };
 
     return (
@@ -27,29 +76,53 @@ const ChatForm = ({ handleSubmit }) => {
                         <img src="/images/chat.png" alt="icon" />
                     </div>
                     <form onSubmit={onJoin}>
-                        <div className="form-group">
+                        <div
+                            className={`form-group ${addErrorClass(
+                                errors.usernameErr
+                            )}`}>
                             <label>Display name</label>
                             <input
                                 className="form-control"
                                 type="text"
-                                name="name"
+                                name="username"
                                 value={username}
-                                onChange={(event) =>
-                                    setUsername(event.target.value)
-                                }
+                                onChange={(event) => {
+                                    setUsername(event.target.value);
+                                    validate(event.target);
+                                }}
                             />
+                            {errors.usernameErr ? (
+                                <span>
+                                    <i className="fa fa-exclamation-triangle"></i>
+                                    <small className="pl-2">
+                                        {errors.usernameErr}
+                                    </small>
+                                </span>
+                            ) : null}
                         </div>
-                        <div className="form-group">
+                        <div
+                            className={`form-group ${addErrorClass(
+                                errors.roomErr
+                            )}`}>
                             <label>Room name</label>
                             <input
                                 className="form-control"
                                 type="text"
                                 name="room"
                                 value={room}
-                                onChange={(event) =>
-                                    setRoom(event.target.value)
-                                }
+                                onChange={(event) => {
+                                    setRoom(event.target.value);
+                                    validate(event.target);
+                                }}
                             />
+                            {errors.roomErr ? (
+                                <span>
+                                    <i className="fa fa-exclamation-triangle"></i>
+                                    <small className="pl-2">
+                                        {errors.roomErr}
+                                    </small>
+                                </span>
+                            ) : null}
                         </div>
 
                         <input
