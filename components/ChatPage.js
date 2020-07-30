@@ -26,7 +26,7 @@ const ChatPage = ({ onSend, userInfo, roomUsers, messages, onLeave }) => {
                     <h3>{APP_NAME}</h3>
                 </div>
                 <input
-                    className="btn btn-primary ml-auto"
+                    className="btn btn-secondary ml-auto"
                     type="button"
                     value="Leave Room"
                     onClick={handleLeave}

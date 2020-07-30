@@ -35,7 +35,7 @@ const ChatMessageSendForm = ({ handleMessageSend }) => {
                     />
                 </div>
                 <div className="col-*">
-                    <button className="btn btn-primary" type="submit">
+                    <button className="btn btn-secondary" type="submit">
                         Send
                     </button>
                 </div>

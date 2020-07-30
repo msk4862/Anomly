@@ -19,11 +19,11 @@
     }
 
     .btn {
-        @include btn-secondary($font-dark, $font-white);
         margin: 10px;
     }
 
     .chat-box {
+        @include inner-box-shadow(10px);
         padding-top: 2rem;
         padding-left: 2.15rem;
         padding-right: 2.15rem;

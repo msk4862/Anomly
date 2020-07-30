@@ -1,9 +1,26 @@
 @import "./variables";
+@import "./utils";
 
 .chat-sidebar {
     color: $font-white;
+
+    h4 {
+        @include inner-box-shadow(10px);
+        border-radius: 10px;
+    }
+
     ul {
+        @include inner-box-shadow(10px);
+        border-radius: 10px;
+        background-color: $primary-color;
         list-style: none;
-        overflow-y: auto;
+        margin: 0;
+        max-height: 50vh;
+        overflow: auto;
+
+        li {
+            padding: 10px;
+        }
+    
     }
 }

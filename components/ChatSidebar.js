@@ -8,7 +8,7 @@ const ChatSidebar = ({ userInfo, roomUsers }) => {
             <div className="row">
                 <div className="col">
                     <h5>Room Name</h5>
-                    <p className="primary-bg p-2 mt-3">{room}</p>
+                    <h4 className="primary-bg p-2 mt-3">{room}</h4>
                     <h5 className="mt-3 mb-3">Users</h5>
                     <ul>
                         {roomUsers.map((user) => {
