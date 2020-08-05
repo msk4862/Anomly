@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+    - "stable"
+cache: yarn
+
+install:
+    - yarn ci
+
+before-script:
+    - echo "Running scripts"
+script:
+    - yarn format
+
+after-success:
+    - echo "Success"
+after-failure:
+    - echo "Failure"

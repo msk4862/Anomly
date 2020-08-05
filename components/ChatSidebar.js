@@ -7,9 +7,13 @@ const ChatSidebar = ({ userInfo, roomUsers }) => {
         <div className="chat-sidebar col-sm-3 p-3">
             <div className="row">
                 <div className="col">
-                    <h5>Room Name</h5>
-                    <h4 className="primary-bg p-2 mt-3">{room}</h4>
-                    <h5 className="mt-3 mb-3">Users</h5>
+                    <h5>
+                        <i className="fa fa-home pr-2"></i>Room Name
+                    </h5>
+                    <h5 className="primary-bg p-2 mt-3">{room}</h5>
+                    <h5 className="mt-3 mb-3">
+                        <i className="fa fa-users pr-2"></i>Users
+                    </h5>
                     <ul>
                         {roomUsers.map((user) => {
                             return <li key={user.id}>{user.username}</li>;

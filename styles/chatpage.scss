@@ -33,3 +33,9 @@
         color: $font-white;
     }
 }
+
+@media only screen and (max-width: 900px) {
+    .container {
+        max-width: 100%;
+    }
+}

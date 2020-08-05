@@ -46,9 +46,9 @@ const ChatMessageSendForm = ({ handleMessageSend }) => {
     return (
         <div className="chatsend-form">
             <form
-                className="row justify-content-center align-items-center"
+                className="row justify-content-center align-items-center m-0"
                 onSubmit={onSend}>
-                <div className={`col-10 ${addErrorClass(error)}`}>
+                <div className={`col-8 col-sm-10 ${addErrorClass(error)}`}>
                     <input
                         className="form-control"
                         ref={chatInputRef}

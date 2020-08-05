@@ -4,7 +4,7 @@
 .chat-sidebar {
     color: $font-white;
 
-    h4 {
+    .primary-bg {
         @include inner-box-shadow(10px);
         border-radius: 10px;
     }
@@ -15,11 +15,53 @@
         background-color: $primary-color;
         list-style: none;
         margin: 0;
-        max-height: 50vh;
-        overflow: auto;
+        padding: 10px;
+    }
+}
 
-        li {
-            padding: 10px;
+@media only screen and (min-width: 576px) {
+    .chat-sidebar {
+        ul {
+            max-height: 50vh;
+            overflow-y: auto;
+
+            li:not(:last-child) {
+                padding-bottom: 5px;
+
+                &::after {
+                    content: "";
+                    display: block;
+                    width: 50%;
+                    height: 1px;
+                    opacity: 0.35;
+                    background-color: $font-white;
+                    margin-top: 5px;
+                }
+            }
         }
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .chat-sidebar {
+        ul {
+            overflow-x: auto;
+            li {
+                z-index: -1;
+                display: inline;
+                padding-bottom: 5px;
+
+                &:not(:last-child)::after {
+                    content: "\2022";
+                    opacity: 0.75;
+                    margin-right: 8px;
+                    margin-left: 8px;
+                }
+            }
+        }
+    }
+
+    ::-webkit-scrollbar {
+        height: 10px;
     }
 }

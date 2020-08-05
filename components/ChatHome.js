@@ -5,7 +5,6 @@ import io from "socket.io-client";
 import ChatForm from "./ChatForm";
 import ChatPage from "./ChatPage";
 import { SOCKET_EVENTS } from "../utils/Constants";
-import "../styles/chathome.scss";
 
 const SOCKET_URI = "http://localhost:3000";
 
