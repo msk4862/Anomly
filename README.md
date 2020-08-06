@@ -14,7 +14,7 @@
 
 ### Tools
 
-- [NextJs](https://nextjs.org/) - React based framework. 
+- [NextJs](https://nextjs.org/) - React based framework for server side rendering. 
 - [Socket.IO](https://socket.io/) - Framework for real-time bidirectional event-based communication.
 - [React Testing Library](https://github.com/testing-library/react-testing-library) - Testing library for React.
 
@@ -24,13 +24,13 @@ yarn dev
 # or
 npm run dev
 ```
-
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
+The page will reload if you make edits.
 
 <br />
 <br />
+
 ### Give it a 🌟 to show your support 😃😃 
 ### And of course, feel free for any kind of contribution.
