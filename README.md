@@ -3,12 +3,12 @@
     <p>
          <b>Anomly is a chat app where one can chat anonymously</b>
     </p>
+      ![HitCount](https://hit-badger.glitch.me/badge?page_id=msk4862.Anomly.id)
       <img src="https://img.shields.io/github/license/msk4862/Copyright-free-image-search?style=flat-square" width="80">
       <img src="https://img.shields.io/github/v/release/msk4862/Copyright-free-image-search?style=flat-square" width="85">
       <img src="https://forthebadge.com/images/badges/made-with-javascript.svg" width="130">
       <img src="https://forthebadge.com/images/badges/powered-by-responsibility.svg" width="170">
-      ![HitCount](https://hit-badger.glitch.me/badge?page_id=msk4862.Anomly.id)
-      </br>
+      <br />
       <img src="https://forthebadge.com/images/badges/built-with-love.svg" width="180">
 </div>
 
