@@ -1,11 +1,10 @@
-## Anomly ![HitCount](https://hit-badger.glitch.me/badge?page_id=msk4862.Anomly.id)
+# Anomly ![HitCount](https://hit-badger.glitch.me/badge?page_id=msk4862.Anomly.id)
 
 <div align="center">
     <h1>Anomly</h1>
     <p>
          <b>Anomly is a chat app where one can chat anonymously</b>
     </p>
-      <img src="https://img.shields.io/github/license/msk4862/Anomly?style=flat-square">
       <img src="https://forthebadge.com/images/badges/made-with-javascript.svg" width="130">
       <img src="https://forthebadge.com/images/badges/powered-by-responsibility.svg" width="170">
       <br />
