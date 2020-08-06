@@ -6,8 +6,7 @@
         "format": "prettier \"*/**.{js,scss}\" --write",
         "build": "next build",
         "start": "node server.js",
-        "dev": "node server.js",
-        "heroku-postbuild": "yarn build"
+        "dev": "node server.js"
     },
     "dependencies": {
         "@zeit/next-sass": "^1.0.1",
