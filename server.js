@@ -6,7 +6,7 @@ const dev = process.env.NODE_ENV !== "production";
 const nextApp = next({ dev });
 const nextHandler = nextApp.getRequestHandler();
 
-const PORT = 3000 || process.env.PORT;
+var PORT = process.env.PORT || 3000;
 
 const { SOCKET_EVENTS, SOCKET_MESSAGES } = require("./utils/Constants");
 const formatMessage = require("./utils/MessageUtil");

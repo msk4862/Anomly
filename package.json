@@ -5,7 +5,7 @@
     "scripts": {
         "format": "prettier \"*/**.{js,scss}\" --write",
         "build": "next build",
-        "start": "node server.js",
+        "start": "node server.js -p $PORT",
         "dev": "node server.js"
     },
     "dependencies": {
