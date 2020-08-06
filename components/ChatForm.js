@@ -47,10 +47,10 @@ const ChatForm = ({ handleSubmit }) => {
                         : "Username is too short!";
                 break;
             case "room":
-                if (value.length > 0) {
-                    if (value.contains(" "))
-                        roomErr = "Room name can't have spaces!";
-                } else roomErr = "Room name can't be empty!";
+                if (value.length == 0) roomErr = "Room name can't be empty!";
+                else if (value.length > 0 && value.includes(" "))
+                    roomErr = "Room name can't have spaces!";
+                else roomErr = null;
                 break;
         }
         setErrors({

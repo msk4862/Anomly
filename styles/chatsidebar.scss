@@ -5,7 +5,7 @@
     color: $font-white;
 
     .primary-bg {
-        @include inner-box-shadow(10px);
+        // @include inner-box-shadow(10px);
         border-radius: 10px;
     }
 

@@ -3,11 +3,10 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "client": "next dev",
         "format": "prettier \"*/**.{js,scss}\" --write",
         "build": "next build",
-        "start": "next start",
-        "dev": "node server/server.js",
+        "start": "node server.js",
+        "dev": "node server.js",
         "heroku-postbuild": "yarn build"
     },
     "dependencies": {

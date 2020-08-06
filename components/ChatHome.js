@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
 import io from "socket.io-client";
 
 import ChatForm from "./ChatForm";
 import ChatPage from "./ChatPage";
 import { SOCKET_EVENTS } from "../utils/Constants";
 
-const SOCKET_URI = "http://localhost:3000";
+// const SOCKET_URI = "http://localhost:3000";
 
 const ChatHome = () => {
-    const router = useRouter();
     const [socket, setSocket] = useState(null);
     const [user, setUser] = useState(null);
     const [roomUsers, setRoomUsers] = useState([]);
@@ -26,7 +24,7 @@ const ChatHome = () => {
      * Handling socket events
      */
     const initSocket = () => {
-        var socket = io.connect(SOCKET_URI);
+        var socket = io();
 
         const { CHAT_BOT, CHAT_MESSAGE, ROOM_USERS } = SOCKET_EVENTS;
 
