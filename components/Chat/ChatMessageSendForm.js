@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 
-import "../styles/chatmessagesendform.scss";
+import "../../styles/chatmessagesendform.scss";
 
 const ChatMessageSendForm = ({ handleMessageSend }) => {
     const [message, setMessage] = useState("");

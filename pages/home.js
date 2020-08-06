@@ -1,5 +1,4 @@
-import Layout from "../components/Layout";
-import ChatHome from "../components/ChatHome";
+import ChatHome from "../components/Chat/ChatHome";
 
 const ChatPage = () => <ChatHome />;
 

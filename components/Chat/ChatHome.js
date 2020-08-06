@@ -3,9 +3,7 @@ import io from "socket.io-client";
 
 import ChatForm from "./ChatForm";
 import ChatPage from "./ChatPage";
-import { SOCKET_EVENTS } from "../utils/Constants";
-
-// const SOCKET_URI = "http://localhost:3000";
+import { SOCKET_EVENTS } from "../../utils/Constants";
 
 const ChatHome = () => {
     const [socket, setSocket] = useState(null);

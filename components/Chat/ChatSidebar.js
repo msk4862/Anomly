@@ -1,4 +1,4 @@
-import "../styles/chatsidebar.scss";
+import "../../styles/chatsidebar.scss";
 
 const ChatSidebar = ({ userInfo, roomUsers }) => {
     const { room } = userInfo;

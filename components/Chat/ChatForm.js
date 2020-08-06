@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import "../styles/chatform.scss";
+import "../../styles/chatform.scss";
 
 const ChatForm = ({ handleSubmit }) => {
     const minUserNameLength = 6;
@@ -15,7 +15,14 @@ const ChatForm = ({ handleSubmit }) => {
     const onJoin = (event) => {
         event.preventDefault();
 
-        if (username != "" && room != "") {
+        const { usernameErr, roomErr } = errors;
+
+        if (
+            username !== "" &&
+            room !== "" &&
+            usernameErr == null &&
+            roomErr == null
+        ) {
             const user = {
                 username,
                 room,
@@ -23,7 +30,7 @@ const ChatForm = ({ handleSubmit }) => {
             handleSubmit(user);
         } else {
             // if both the field are null
-            if (!errors.usernameErr && !errors.roomErr) {
+            if (!usernameErr && !roomErr) {
                 setErrors({
                     usernameErr: "Username can't be empty!",
                     roomErr: "Room name can't be empty!",

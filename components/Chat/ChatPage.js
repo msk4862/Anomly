@@ -3,8 +3,8 @@ import { useRef } from "react";
 import ChatMessage from "./ChatMessage";
 import ChatMessageSendForm from "./ChatMessageSendForm";
 import ChatSidebar from "./ChatSidebar";
-import { APP_NAME } from "../utils/Constants";
-import "../styles/chatpage.scss";
+import { APP_NAME } from "../../utils/Constants";
+import "../../styles/chatpage.scss";
 
 const ChatPage = ({ onSend, userInfo, roomUsers, messages, onLeave }) => {
     const ChatContainerEndRef = useRef(null);

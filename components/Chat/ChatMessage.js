@@ -1,5 +1,5 @@
-import { SOCKET_EVENTS } from "../utils/Constants";
-import "../styles/chatmessage.scss";
+import { SOCKET_EVENTS } from "../../utils/Constants";
+import "../../styles/chatmessage.scss";
 
 const ChatMessage = ({ message }) => {
     const renderChatMessage = () => {

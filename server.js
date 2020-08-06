@@ -8,7 +8,7 @@ const nextHandler = nextApp.getRequestHandler();
 
 var PORT = process.env.PORT || 3000;
 
-const { SOCKET_EVENTS, SOCKET_MESSAGES } = require("./utils/Constants");
+const { SOCKET_EVENTS } = require("./utils/Constants");
 const formatMessage = require("./utils/MessageUtil");
 const {
     addUser,
