@@ -3,7 +3,7 @@
 <div align="center">
     <h1>Anomly</h1>
     <p>
-         <b>Anomly is a chat app where one can chat anonymously</b>
+         <b>Anomly is a chat app where one can chat anonymously and create unlimited chat rooms</b>
     </p>
       <img src="https://img.shields.io/github/license/msk4862/Anomly?style=flat-square" width="92">
       <img src="https://forthebadge.com/images/badges/made-with-javascript.svg" width="150">
