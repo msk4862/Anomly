@@ -1,12 +1,16 @@
 {
     "name": "chat-app",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "private": true,
+    "repository": "git@github.com:msk4862/Anomly.git",
+    "author": "Shoaib Asgar <msk4862@gmail.com>",
+    "license": "MIT",
     "scripts": {
         "format": "prettier \"*/**.{js,scss}\" --write",
         "build": "next build",
         "start": "node server.js -p $PORT",
-        "dev": "node server.js"
+        "dev": "node server.js",
+        "test": "jest --watchAll"
     },
     "dependencies": {
         "@zeit/next-sass": "^1.0.1",
@@ -21,7 +25,14 @@
         "socket.io-client": "^2.3.0"
     },
     "devDependencies": {
+        "@babel/core": "^7.11.1",
+        "@testing-library/jest-dom": "^5.11.2",
+        "@testing-library/react": "^10.4.8",
+        "babel-jest": "^26.2.2",
+        "babel-preset-env": "^1.7.0",
+        "babel-preset-react": "^6.24.1",
         "husky": "^4.2.5",
+        "jest": "^26.2.2",
         "nodemon": "^2.0.4",
         "prettier": "^2.0.5",
         "pretty-quick": "^2.0.1"
@@ -29,6 +40,12 @@
     "husky": {
         "hooks": {
             "pre-commit": "pretty-quick --staged"
+        }
+    },
+    "jest": {
+        "moduleNameMapper": {
+            "\\.(css|less|sass|scss)$": "<rootDir>/__mocks__/styleMock.js",
+            "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js"
         }
     }
 }
