@@ -10,6 +10,7 @@ before-script:
     - echo "Running scripts"
 script:
     - yarn format
+    - yarn test
 
 after-success:
     - echo "Success"
