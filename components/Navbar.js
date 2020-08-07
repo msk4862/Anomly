@@ -1,13 +1,14 @@
 import Link from "next/link";
 
-import { APP_NAME, SOCAIL_LINKS } from "../utils/Constants";
+import { SOCAIL_LINKS } from "../utils/Constants";
 import "../styles/navbar.scss";
 
 const Navbar = () => (
     <nav className="navbar navbar-expand-sm">
         <Link href="/">
             <a className="navbar-brand">
-                <h1>{APP_NAME}</h1>
+                {/* <h1>{APP_NAME}</h1> */}
+                <img src="/images/chat-logo1.png" />
             </a>
         </Link>
         <button
@@ -18,7 +19,9 @@ const Navbar = () => (
             aria-controls="navbar"
             aria-expanded="false"
             aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
+            <span>
+                <i className="fa fa-bars" aria-hidden="true" />
+            </span>
         </button>
 
         <div className="collapse navbar-collapse" id="navbar">

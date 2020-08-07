@@ -1,17 +1,49 @@
 @import "./variables";
 
 .navbar {
-    padding: 1rem 2rem;
+    // padding: 1rem 2rem;
     .navbar-brand {
-        h1 {
-            font-weight: 500;
+        img {
+            width: 250px;
+            height: 100%;
         }
     }
+    .navbar-toggler {
+        color: $font-light;
+        font-size: $h4;
+        border: 1px solid $font-light;
+
+        &:focus {
+            outline-color: transparent;
+            background-color: transparent;
+        }
+    }
+
     .nav-item {
         margin-right: 1.5rem;
 
         .nav-link:hover {
             color: $font-dark;
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .navbar {
+        .navbar-brand {
+            img {
+                width: 200px;
+                height: 100%;
+            }
+        }
+
+        .nav-item:not(:last-child)::after {
+            content: "";
+            display: block;
+            margin-top: 5px;
+            background-color: $font-light;
+            width: 40%;
+            height: 1px;
         }
     }
 }

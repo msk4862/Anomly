@@ -4,8 +4,12 @@
 .chat-form-container {
     color: $font-white;
 
+    h2 {
+        color: $font-light;
+    }
+
     img {
-        width: 50px;
+        width: 200px;
         height: 100%;
     }
 
@@ -14,7 +18,7 @@
         @include box-shadow(10px);
 
         > div {
-            background-color: $secondary-color;
+            background-color: $primary-color;
             padding: 0.25rem;
         }
 
@@ -28,6 +32,7 @@
             .btn {
                 width: 100%;
                 @include btn-secondary($font-white, transparent, 2px);
+                @include box-shadow(10px);
             }
 
             .btn:hover {

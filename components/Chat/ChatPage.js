@@ -3,7 +3,6 @@ import { useRef } from "react";
 import ChatMessage from "./ChatMessage";
 import ChatMessageSendForm from "./ChatMessageSendForm";
 import ChatSidebar from "./ChatSidebar";
-import { APP_NAME } from "../../utils/Constants";
 import "../../styles/chatpage.scss";
 
 const ChatPage = ({ onSend, userInfo, roomUsers, messages, onLeave }) => {
@@ -22,8 +21,7 @@ const ChatPage = ({ onSend, userInfo, roomUsers, messages, onLeave }) => {
         <div className="chat-page container">
             <div className="row justify-content-start text-start align-items-center m-0">
                 <div className="col">
-                    <img src="/images/chat.png" alt="logo" />
-                    <h3>{APP_NAME}</h3>
+                    <img src="/images/chat-logo1.png" alt="logo" />
                 </div>
                 <input
                     className="btn btn-secondary ml-auto"

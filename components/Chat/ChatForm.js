@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Link from "next/link";
 
 import "../../styles/chatform.scss";
 
@@ -48,10 +49,10 @@ const ChatForm = ({ handleSubmit }) => {
 
         switch (name) {
             case "username":
-                usernameErr =
-                    value.length >= minUserNameLength
-                        ? null
-                        : "Username is too short!";
+                if (value.length == 0) usernameErr = "Username can't be empty!";
+                else if (value.length < minUserNameLength)
+                    usernameErr = "Username is too short!";
+                else usernameErr = null;
                 break;
             case "room":
                 if (value.length == 0) roomErr = "Room name can't be empty!";
@@ -83,7 +84,11 @@ const ChatForm = ({ handleSubmit }) => {
             <div className="row justify-content-center align-items center m-0">
                 <div className="chat-form col-10 col-sm-6 col-md-4 p-0">
                     <div className="row justify-content-center align-items-center m-0">
-                        <img src="/images/chat.png" alt="icon" />
+                        <Link href="/">
+                            <a>
+                                <img src="/images/chat-logo1.png" alt="icon" />
+                            </a>
+                        </Link>
                     </div>
                     <form onSubmit={onJoin}>
                         <div
