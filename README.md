@@ -1,33 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-<br />
-![HitCount](https://hit-badger.glitch.me/badge?page_id=msk4862.Anomly.id)
+# Anomly ![HitCount](https://hit-badger.glitch.me/badge?page_id=msk4862.Anomly.id)
+
+<div align="center">
+    <h1>Anomly</h1>
+    <p>
+         <b>Anomly is a chat app where one can chat anonymously</b>
+    </p>
+      <img src="https://forthebadge.com/images/badges/made-with-javascript.svg" width="130">
+      <img src="https://forthebadge.com/images/badges/powered-by-responsibility.svg" width="170">
+      <br />
+      <img src="https://forthebadge.com/images/badges/built-with-love.svg" width="180">
+</div>
+
+### Tools
+
+- [NextJs](https://nextjs.org/) - React based framework for server side rendering. 
+- [Socket.IO](https://socket.io/) - Framework for real-time bidirectional event-based communication.
+- [React Testing Library](https://github.com/testing-library/react-testing-library) - Testing library for React.
 
 ## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
 ```
+yarn dev
+# or
+npm run dev
+```
+Runs the app in the development mode.<br />
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The page will reload if you make edits.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+<br />
+<br />
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
+### Give it a 🌟 to show your support 😃😃 
+### And of course, feel free for any kind of contribution.
