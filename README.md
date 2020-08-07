@@ -5,8 +5,9 @@
     <p>
          <b>Anomly is a chat app where one can chat anonymously</b>
     </p>
-      <img src="https://forthebadge.com/images/badges/made-with-javascript.svg" width="130">
-      <img src="https://forthebadge.com/images/badges/powered-by-responsibility.svg" width="170">
+      <img src="https://img.shields.io/github/license/msk4862/Anomly?style=flat-square">
+      <img src="https://forthebadge.com/images/badges/made-with-javascript.svg" width="150">
+      <img src="https://forthebadge.com/images/badges/powered-by-responsibility.svg" width="190">
       <br />
       <img src="https://forthebadge.com/images/badges/built-with-love.svg" width="180">
 </div>
