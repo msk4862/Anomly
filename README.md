@@ -5,7 +5,7 @@
     <p>
          <b>Anomly is a chat app where one can chat anonymously and create unlimited chat rooms</b>
     </p>
-      <img src="https://api.travis-ci.org/msk4862/Anomly.svg?branch=master&status=passed" width="101">
+      <img src="https://api.travis-ci.org/msk4862/Anomly.svg?branch=master&status=passed" width="90">
       <img src="https://img.shields.io/github/license/msk4862/Anomly?style=flat-square" width="92">
       <img src="https://forthebadge.com/images/badges/made-with-javascript.svg" width="150">
       <img src="https://forthebadge.com/images/badges/powered-by-responsibility.svg" width="190">
