@@ -1,10 +1,5 @@
 import React from "react";
-import {
-    render,
-    cleanup,
-    fireEvent,
-    getAllByText,
-} from "@testing-library/react";
+import { render, cleanup, fireEvent } from "@testing-library/react";
 import ChatForm from "../../components/Chat/ChatForm";
 
 afterEach(cleanup);
