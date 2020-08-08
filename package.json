@@ -10,7 +10,8 @@
         "build": "next build",
         "start": "node server.js -p $PORT",
         "dev": "node server.js",
-        "test": "jest --watchAll"
+        "test": "jest",
+        "test:watch": "jest --watchAll"
     },
     "dependencies": {
         "@zeit/next-sass": "^1.0.1",
