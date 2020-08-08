@@ -33,7 +33,7 @@ nextApp.prepare().then(() => {
         console.log(`Ready on port http://localhost:${PORT}`);
     });
 
-    const io = require("socket.io")(server);
+    const io = require("socket.io").listen(server);
 
     // Run when client connnects
     io.on("connect", (socket) => {
