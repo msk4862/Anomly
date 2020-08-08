@@ -3,7 +3,7 @@
 <div align="center">
     <h1>Anomly</h1>
     <p>
-         <b>Anomly is a chat app where one can chat anonymously and create unlimited chat rooms</b>
+         <b>Anomly is a chat app where one can chat anonymously and can create unlimited chat rooms</b>
     </p>
       <img src="https://api.travis-ci.org/msk4862/Anomly.svg?branch=master&status=passed" width="90">
       <img src="https://img.shields.io/github/license/msk4862/Anomly?style=flat-square" width="92">
@@ -15,16 +15,18 @@
 
 ### Tools
 
-- [NextJs](https://nextjs.org/) - React based framework for server side rendering. 
-- [Socket.IO](https://socket.io/) - Framework for real-time bidirectional event-based communication.
-- [React Testing Library](https://github.com/testing-library/react-testing-library) - Testing library for React.
+-   [NextJs](https://nextjs.org/) - React based framework for server side rendering.
+-   [Socket.IO](https://socket.io/) - Framework for real-time bidirectional event-based communication.
+-   [React Testing Library](https://github.com/testing-library/react-testing-library) - Testing library for React.
 
 ## Getting Started
+
 ```
 yarn dev
 # or
 npm run dev
 ```
+
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
@@ -33,5 +35,6 @@ The page will reload if you make edits.
 <br />
 <br />
 
-### Give it a 🌟 to show your support 😃😃 
+### Give it a 🌟 to show your support 😃😃
+
 ### And of course, feel free for any kind of contribution.
