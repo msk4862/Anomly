@@ -79,10 +79,10 @@ const ChatForm = ({ handleSubmit }) => {
     return (
         <div className="chat-form-container container">
             <div className="row justify-content-center m-0 text-center">
-                <h2 className="p-5">Welcome again to Anomly!</h2>
+                <h2 className="mt-5 mb-5">Welcome again to Anomly!</h2>
             </div>
             <div className="row justify-content-center align-items center m-0">
-                <div className="chat-form col-10 col-sm-6 col-md-4 p-0">
+                <div className="chat-form col-11 col-sm-6 col-md-4 p-0">
                     <div className="row justify-content-center align-items-center m-0">
                         <Link href="/">
                             <a>
