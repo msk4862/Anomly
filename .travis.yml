@@ -4,6 +4,7 @@ node_js:
 cache: yarn
 
 install:
+    - yarn global add codecov
     - yarn
 
 before-script:
@@ -11,6 +12,7 @@ before-script:
 script:
     - yarn format
     - yarn test
+    - codecov
 
 after-success:
     - echo "Success"
