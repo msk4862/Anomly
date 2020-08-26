@@ -3,6 +3,9 @@ node_js:
     - "stable"
 cache: yarn
 
+notification:
+    email: false
+
 install:
     - yarn global add codecov
     - yarn
@@ -12,9 +15,9 @@ before-script:
 script:
     - yarn format
     - yarn test
-    - codecov
 
 after-success:
+    - codecov
     - echo "Success"
 after-failure:
     - echo "Failure"
