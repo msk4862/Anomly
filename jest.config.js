@@ -5,5 +5,7 @@ module.exports = {
         "\\.(gif|ttf|eot|svg)$": "<rootDir>/__mocks__/fileMock.js",
     },
     coveragePathIgnorePatterns: ["/node_modules/"],
+    coverageDirectory: "./coverage/",
+    collectCoverage: true,
     setupFilesAfterEnv: ["<rootDir>/setupTests.js"],
 };
