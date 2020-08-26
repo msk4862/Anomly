@@ -1,16 +1,19 @@
 @import "../styles//variables";
 
-.chat-message,
-.bot-message {
+.message {
+    width: 70%;
     margin-top: 1rem;
     padding: 5px 10px;
     border-radius: 10px;
     z-index: -1;
 
     p {
-        color: #1b262c;
-        margin-right: 10px;
+        margin-right: 0.75rem;
         margin-bottom: 0;
+
+        &:not(:first-child) {
+            margin-top: -0.25rem;
+        }
 
         small {
             color: $primary-color;
@@ -18,16 +21,24 @@
             font-size: $small-xs;
         }
     }
-}
 
-.chat-message {
-    background-color: $font-light;
-}
-.bot-message {
-    padding-top: 8px;
-    padding-bottom: 8px;
-    width: 85%;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: #7fdbda;
+    &-bot {
+        padding-top: 8px;
+        padding-bottom: 8px;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        color: $font-white;
+        background-color: $secondary-color;
+    }
+
+    &-chat {
+        color: #1b262c;
+        background-color: $font-light;
+
+        &-you {
+            background-color: #7fdbda;
+            margin-left: auto;
+        }
+    }
 }
