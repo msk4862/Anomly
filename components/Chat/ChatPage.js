@@ -5,7 +5,7 @@ import ChatMessageSendForm from "./ChatMessageSendForm";
 import ChatSidebar from "./ChatSidebar";
 import "../../styles/chatpage.scss";
 
-const ChatPage = ({ onSend, userInfo, roomUsers, messages, onLeave }) => {
+const ChatPage = ({ onSend, roomUsers, messages, onLeave }) => {
     const ChatContainerEndRef = useRef(null);
 
     const handleMessageSend = (message) => {
@@ -33,7 +33,7 @@ const ChatPage = ({ onSend, userInfo, roomUsers, messages, onLeave }) => {
 
             <div className="row justify-centent-between align-items-start secondary-bg  m-0">
                 {/*Sidebar */}
-                <ChatSidebar userInfo={userInfo} roomUsers={roomUsers} />
+                <ChatSidebar roomUsers={roomUsers} />
 
                 {/* MessageArea */}
                 <div className="col-sm-9">

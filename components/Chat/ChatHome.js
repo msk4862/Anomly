@@ -5,6 +5,8 @@ import ChatForm from "./ChatForm";
 import ChatPage from "./ChatPage";
 import { SOCKET_EVENTS } from "../../utils/Constants";
 
+export const UserContext = React.createContext(null);
+
 const ChatHome = () => {
     const [socket, setSocket] = useState(null);
     const [user, setUser] = useState(null);
@@ -96,13 +98,14 @@ const ChatHome = () => {
             {!user ? (
                 <ChatForm handleSubmit={onJoin} />
             ) : (
-                <ChatPage
-                    onSend={sendMessage}
-                    userInfo={user}
-                    roomUsers={roomUsers}
-                    messages={messages}
-                    onLeave={onLeave}
-                />
+                <UserContext.Provider value={user}>
+                    <ChatPage
+                        onSend={sendMessage}
+                        roomUsers={roomUsers}
+                        messages={messages}
+                        onLeave={onLeave}
+                    />
+                </UserContext.Provider>
             )}
         </section>
     );
