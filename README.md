@@ -22,9 +22,11 @@
 
 ## Getting Started
 
-```
+```sh
 yarn dev
-# or
+```
+***or***
+```sh
 npm run dev
 ```
 
