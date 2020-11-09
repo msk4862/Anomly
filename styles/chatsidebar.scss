@@ -5,8 +5,33 @@
     color: $font-white;
 
     .primary-bg {
-        // @include inner-box-shadow(10px);
         border-radius: 10px;
+    }
+
+    .room-name {
+        white-space: nowrap;
+        overflow: hidden;
+
+        input {
+            border: transparent;
+            outline: none;
+            background-color: transparent;
+            color: $font-white;
+        }
+    }
+
+    .custom-tooltip-top {
+        &::before {
+            @include tooltip-position($top: -15px);
+        }
+    }
+
+    button,
+    button:focus {
+        border-color: $font-white;
+        outline: none;
+        font-size: 1.25rem;
+        color: $font-white;
     }
 
     ul {
@@ -19,6 +44,7 @@
     }
 }
 
+/* Mobile Screen */
 @media only screen and (min-width: 576px) {
     .chat-sidebar {
         ul {

@@ -99,6 +99,39 @@ a:hover {
     border-image: none;
 }
 
+/* custom tooltip */
+/* tooltip container */
+.custom-tooltip {
+    position: relative;
+
+    /* tooltip text */
+    &::before {
+        display: none;
+        content: attr(data-tooltip);
+        position: absolute;
+        background-color: #000;
+        color: $font-white;
+        font-size: $small;
+        white-space: nowrap;
+        padding: 3px 5px;
+        text-align: center;
+        z-index: 1;
+        animation: fade-in 0.2s ease-in;
+    }
+
+    &-top::before {
+        @include tooltip-position($top: -10px);
+    }
+
+    &-bottom::before {
+        @include tooltip-position($bottom: -10px);
+    }
+
+    &:hover::before {
+        display: block;
+    }
+}
+
 ::-webkit-scrollbar {
     width: 0.475rem;
 }
