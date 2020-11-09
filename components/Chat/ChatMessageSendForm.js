@@ -13,13 +13,14 @@ const ChatMessageSendForm = ({ handleMessageSend }) => {
 
     const onSend = (event) => {
         event.preventDefault();
+        const messageText = message.trim();
 
-        if (message != "") {
-            handleMessageSend(message);
+        if (messageText != "") {
+            handleMessageSend(messageText);
             setMessage("");
             chatInputRef.current.focus();
         } else {
-            validate(message);
+            validate(messageText);
         }
     };
 
@@ -46,24 +47,22 @@ const ChatMessageSendForm = ({ handleMessageSend }) => {
     return (
         <div className="chatsend-form">
             <form
-                className="row justify-content-center align-items-center m-0"
+                className="d-flex justify-content-center align-items-center m-0"
                 onSubmit={onSend}>
-                <div className={`col-8 col-sm-10 ${addErrorClass(error)}`}>
+                <div className={`flex-grow-1 ${addErrorClass(error)}`}>
                     <input
                         className="form-control"
                         ref={chatInputRef}
                         type="text"
-                        placeholder="Enter Message"
+                        placeholder="Type your message here..."
                         autoComplete="off"
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                     />
                 </div>
-                <div className="col-*">
-                    <button className="btn btn-secondary" type="submit">
-                        Send
-                    </button>
-                </div>
+                <button className="btn btn-secondary ml-1" type="submit">
+                    <i className="fa fa-send"></i>
+                </button>
             </form>
         </div>
     );

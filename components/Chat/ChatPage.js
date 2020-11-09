@@ -53,13 +53,7 @@ const ChatPage = ({ onSend, roomUsers, messages, onLeave }) => {
                 </div>
                 {/* /MessageArea */}
             </div>
-            <div className="row">
-                <div className="col">
-                    <ChatMessageSendForm
-                        handleMessageSend={handleMessageSend}
-                    />
-                </div>
-            </div>
+            <ChatMessageSendForm handleMessageSend={handleMessageSend} />
         </div>
     );
 };

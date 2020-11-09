@@ -67,36 +67,39 @@ a:hover {
 .primary-bg {
     background-color: $primary-color;
 }
+
 .btn {
     border-radius: 0;
     padding: 10px 1rem;
     font-weight: 600;
-}
-.btn-primary {
-    background-color: transparent;
-    border-image: linear-gradient(-45deg, $primary-color, $font-light);
-    border-width: 4px;
-    border-image-slice: 1;
-}
 
-.btn-primary:hover {
-    background-color: $font-white;
-    color: $font-dark;
-    border-color: $font-white;
-    border-image: none;
-}
+    &-primary {
+        background-color: transparent;
+        border-image: linear-gradient(-45deg, $primary-color, $font-light);
+        border-width: 4px;
+        border-image-slice: 1;
 
-.btn-secondary {
-    background-color: $font-white;
-    border: 2px solid $font-dark;
-    color: $font-dark;
-}
+        &:hover {
+            background-color: $font-white;
+            color: $font-dark;
+            border-color: $font-white;
+            border-image: none;
+        }
+    }
 
-.btn-secondary:hover {
-    background-color: $font-light;
-    color: $font-dark;
-    border-color: $font-light;
-    border-image: none;
+    &-secondary,
+    &:not(:disabled):not(.disabled):focus {
+        background-color: $font-white;
+        border: 2px solid $font-dark;
+        color: $font-dark;
+
+        &:hover {
+            background-color: $font-light;
+            color: $font-dark;
+            border-color: $font-light;
+            border-image: none;
+        }
+    }
 }
 
 /* custom tooltip */
@@ -120,11 +123,11 @@ a:hover {
     }
 
     &-top::before {
-        @include tooltip-position($top: -10px);
+        @include tooltip-position($top: -5px);
     }
 
     &-bottom::before {
-        @include tooltip-position($bottom: -10px);
+        @include tooltip-position($bottom: -5px);
     }
 
     &:hover::before {
