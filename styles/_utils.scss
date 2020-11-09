@@ -18,24 +18,24 @@
     $bottom: false,
     $left: false
 ) {
-    // @if $position == "top" {
-    //     top: -5px;
-    //     transform: translateY(-50%);
-    // }
     @if $top != false {
         top: $top;
-        transform: translateX(-45%);
+        left: 50%;
+        transform: translateX(-50%);
     }
     @if $right != false {
         right: $right;
-        transform: translateY(-45%);
+        top: 50%;
+        transform: translateY(-50%);
     }
     @if $bottom != false {
         bottom: $bottom;
-        transform: translateX(-45%);
+        left: 50%;
+        transform: translateX(-50%);
     }
     @if $left != false {
         left: $left;
-        transform: translateY(-45%);
+        top: 50%;
+        transform: translateY(-50%);
     }
 }

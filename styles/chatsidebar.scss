@@ -26,12 +26,15 @@
         }
     }
 
-    button,
-    button:focus {
-        border-color: $font-white;
+    .btn {
         outline: none;
         font-size: 1.25rem;
         color: $font-white;
+        background-color: rgba($color: #000, $alpha: 0.125);
+
+        &:hover {
+            border-color: $font-white;
+        }
     }
 
     ul {

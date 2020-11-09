@@ -35,7 +35,7 @@ const ChatSidebar = ({ roomUsers }) => {
                             className="custom-tooltip custom-tooltip-top"
                             data-tooltip={tooltipText}>
                             <button
-                                className="btn secondary-bg m-0 p-2"
+                                className="btn m-0 p-2"
                                 onClick={copyToClipboard}>
                                 <i className="fa fa-copy"></i>
                             </button>
