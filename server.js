@@ -9,7 +9,7 @@ const nextHandler = nextApp.getRequestHandler();
 var PORT = process.env.PORT || 3000;
 
 const { SOCKET_EVENTS } = require("./utils/Constants");
-const formatMessage = require("./utils/MessageUtil");
+const Message = require("./utils/Message");
 const {
     addUser,
     getCurrentUser,
@@ -38,7 +38,6 @@ nextApp.prepare().then(() => {
     // Run when client connnects
     io.on("connect", (socket) => {
         const {
-            CHAT_BOT,
             CHAT_MESSAGE,
             JOIN_ROOM,
             ROOM_USERS,
@@ -49,20 +48,30 @@ nextApp.prepare().then(() => {
         socket.on(JOIN_ROOM, ({ username, room }) => {
             socket.join(room);
 
+            // add user to users list
             addUser(socket.id, username, room);
 
             // sent to single client connected client
             socket.emit(
-                CHAT_BOT,
-                formatMessage(CHAT_BOT, `Welcome to Anomly ${username}!`)
+                CHAT_MESSAGE,
+                new Message(
+                    "CHAT_BOT",
+                    `Welcome to Anomly ${username}!`,
+                    Message.BOT
+                )
+                // formatMessage(CHAT_BOT, `Welcome to Anomly ${username}!`)
             );
 
             // Broasdcast to all user except client when a user is joined
             socket.broadcast
                 .to(room)
                 .emit(
-                    CHAT_BOT,
-                    formatMessage(CHAT_BOT, `${username} has joined the room`)
+                    CHAT_MESSAGE,
+                    new Message(
+                        "CHAT_BOT",
+                        `${username} has joined the room`,
+                        Message.BOT
+                    )
                 );
 
             // send room users info
@@ -79,7 +88,10 @@ nextApp.prepare().then(() => {
             const { username, room } = cur_user;
 
             // emit this message to everyone
-            io.to(room).emit(CHAT_MESSAGE, formatMessage(username, msg));
+            io.to(room).emit(
+                CHAT_MESSAGE,
+                new Message(username, msg, Message.TEXT)
+            );
         });
 
         // Broadcast
@@ -90,8 +102,13 @@ nextApp.prepare().then(() => {
                 const { id, username, room } = cur_user;
                 // sent to all
                 io.to(room).emit(
-                    CHAT_BOT,
-                    formatMessage(CHAT_BOT, `${username} has left the room`)
+                    CHAT_MESSAGE,
+                    // formatMessage(CHAT_BOT, `${username} has left the room`)
+                    new Message(
+                        "CHAT_BOT",
+                        `${username} has left the room`,
+                        Message.BOT
+                    )
                 );
                 removeUser(id);
 

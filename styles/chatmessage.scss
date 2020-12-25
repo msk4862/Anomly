@@ -2,7 +2,7 @@
 
 .message {
     width: 70%;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
     padding: 5px 10px;
     border-radius: 10px;
     z-index: -1;
@@ -23,9 +23,9 @@
     }
 
     &-bot {
-        padding-top: 8px;
-        padding-bottom: 8px;
-        width: 80%;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        width: 50%;
         margin-left: auto;
         margin-right: auto;
         color: $font-white;
@@ -37,7 +37,7 @@
         color: #1b262c;
         background-color: $font-light;
 
-        &-you {
+        &-self {
             background-color: #7fdbda;
             margin-left: auto;
         }

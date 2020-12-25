@@ -1,12 +1,51 @@
-@import "../styles//variables";
+@import "./variables";
+@import "./utils";
 
 .chatsend-form {
     background-color: $primary-color;
     padding: 0.75rem 0.5rem;
+
     form {
+        color: $font-white;
+
+        .btn-collection {
+            position: relative;
+        }
+
+        .float-menu {
+            position: absolute;
+            bottom: 1rem;
+            left: 0;
+            right: 0;
+            list-style: none;
+
+            label {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 1.35rem;
+                cursor: pointer;
+
+                input {
+                    display: none;
+                }
+            }
+
+            .circular-btn {
+                z-index: 1;
+                @include button-variant($font-white, #c70039);
+                @include box-shadow(8px, #000, 0.5);
+            }
+        }
+
+        span {
+            cursor: pointer;
+            padding: 0.5rem 0.75rem;
+            font-size: 1.5rem;
+        }
+
         input {
             width: 100%;
-            padding: 0.5rem;
             font-size: $base-size;
             border: none;
         }

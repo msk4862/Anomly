@@ -9,12 +9,9 @@ const ChatPage = ({ onSend, roomUsers, messages, onLeave }) => {
     const ChatContainerEndRef = useRef(null);
 
     const handleMessageSend = (message) => {
+        // scroll to end of message window
         ChatContainerEndRef.current.scrollIntoView({ behavior: "smooth" });
         onSend(message);
-    };
-
-    const handleLeave = () => {
-        onLeave();
     };
 
     return (
@@ -27,7 +24,7 @@ const ChatPage = ({ onSend, roomUsers, messages, onLeave }) => {
                     className="btn btn-secondary ml-auto"
                     type="button"
                     value="Leave Room"
-                    onClick={handleLeave}
+                    onClick={onLeave}
                 />
             </div>
 

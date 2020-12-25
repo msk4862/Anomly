@@ -4,12 +4,17 @@
     color: $font-color;
 }
 
-@mixin box-shadow($width, $color: #000) {
-    box-shadow: 0 0 $width rgba($color, $alpha: 0.5);
+@mixin button-variant($font-color, $background-color) {
+    background-color: $background-color;
+    color: $font-color;
 }
 
-@mixin inner-box-shadow($width, $color: #000) {
-    box-shadow: inset 0 0 $width rgba($color, $alpha: 0.5);
+@mixin box-shadow($width, $color: #000, $alpha: 0.5) {
+    box-shadow: 0 0 $width rgba($color, $alpha);
+}
+
+@mixin inner-box-shadow($width, $color: #000, $alpha: 0.5) {
+    box-shadow: inset 0 0 $width rgba($color, $alpha);
 }
 
 @mixin tooltip-position(

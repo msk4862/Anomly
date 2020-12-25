@@ -1,10 +1,12 @@
 import { useState, useRef, useEffect } from "react";
 
 import "../../styles/chatmessagesendform.scss";
+import FloatingButtonList from "./FloatingButtonList";
 
 const ChatMessageSendForm = ({ handleMessageSend }) => {
     const [message, setMessage] = useState("");
     const [error, setError] = useState(null);
+    const [isFloatBtnVisible, setFloatBtnVisible] = useState(false);
     const chatInputRef = useRef(null);
 
     useEffect(() => {
@@ -22,6 +24,10 @@ const ChatMessageSendForm = ({ handleMessageSend }) => {
         } else {
             validate(messageText);
         }
+    };
+
+    const toggleFloatBtnVisibility = () => {
+        setFloatBtnVisible((prevState) => !prevState);
     };
 
     /**
@@ -47,8 +53,17 @@ const ChatMessageSendForm = ({ handleMessageSend }) => {
     return (
         <div className="chatsend-form">
             <form
-                className="d-flex justify-content-center align-items-center m-0"
+                className="d-flex justify-content-center align-items-center"
                 onSubmit={onSend}>
+                <div className="btn-collection">
+                    <FloatingButtonList isVisible={isFloatBtnVisible} />
+                    <span
+                        className="circular-btn"
+                        onClick={toggleFloatBtnVisibility}>
+                        <i className="fa fa-paperclip"></i>
+                    </span>
+                </div>
+
                 <div className={`flex-grow-1 ${addErrorClass(error)}`}>
                     <input
                         className="form-control"

@@ -4,6 +4,7 @@ import io from "socket.io-client";
 import ChatForm from "./ChatForm";
 import ChatPage from "./ChatPage";
 import { SOCKET_EVENTS } from "../../utils/Constants";
+import Message from "../../utils/Message";
 
 export const UserContext = React.createContext(null);
 
@@ -30,21 +31,22 @@ const ChatHome = () => {
 
         // listens for incoming message from server
         // 1. bot messages
-        socket.on(CHAT_BOT, (msg) => {
-            const message = {
-                type: CHAT_BOT,
-                text: msg.text,
-            };
-            setMessages((messages) => [...messages, message]);
-        });
+        // socket.on(CHAT_BOT, (message) => {
+        // const message = {
+        //     type: CHAT_BOT,
+        //     text: msg.text,
+        // };
+        //     setMessages((messages) => [...messages, message]);
+        // });
+
         // 2. chat messages
-        socket.on(CHAT_MESSAGE, (msg) => {
-            const message = {
-                type: CHAT_MESSAGE,
-                user: msg.user,
-                time: msg.time,
-                text: msg.text,
-            };
+        socket.on(CHAT_MESSAGE, (message) => {
+            // const message = {
+            //     type: CHAT_MESSAGE,
+            //     user: msg.user,
+            //     time: msg.time,
+            //     text: msg.text,
+            // };
             setMessages((messages) => [...messages, message]);
         });
         // 3. set room users

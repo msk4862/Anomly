@@ -23,7 +23,7 @@ const ChatSidebar = ({ roomUsers }) => {
                     <h5>
                         <i className="fa fa-home pr-2"></i>Room Name
                     </h5>
-                    <div class="d-flex align-items-center primary-bg mt-3">
+                    <div className="d-flex align-items-center primary-bg mt-3">
                         <div className="room-name flex-grow-1 p-2">
                             <input
                                 ref={roomInputRef}

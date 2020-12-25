@@ -1,46 +1,49 @@
 import { useContext } from "react";
+import dayjs from "dayjs";
+import customParseFormat from "dayjs/plugin/customParseFormat";
 import { UserContext } from "./ChatHome";
-import { SOCKET_EVENTS } from "../../utils/Constants";
+import Message from "../../utils/Message";
 import "../../styles/chatmessage.scss";
 
 const ChatMessage = ({ message }) => {
-    const user = useContext(UserContext);
+    dayjs.extend(customParseFormat);
 
+    // current user
+    const userInfo = useContext(UserContext);
+    const { user, chatMessage, time, type } = message;
+
+    /**
+     * Render text messages
+     */
     const renderChatMessage = () => {
-        return user.username === message.user ? (
-            <div className="message message-chat message-chat-you tri-right">
+        if (type === Message.BOT) {
+            return (
+                <div className="message message-bot text-center">
+                    <small>{chatMessage}</small>
+                </div>
+            );
+        }
+
+        return userInfo.username === user ? (
+            <div className="message message-chat message-chat-self tri-right">
                 <p>
-                    <small>You:</small>
-                    <small>{message.time}</small>
+                    <small>You</small>
+                    <small>{dayjs(time).format("h:m:s a")}</small>
                 </p>
-                <p>{message.text}</p>
+                <p>{chatMessage}</p>
             </div>
         ) : (
             <div className="message message-chat tri-left">
                 <p>
-                    <small>{message.user}</small>
-                    <small>{message.time}</small>
+                    <small>{user}</small>
+                    <small>{dayjs(time).format("h:m:s a")}</small>
                 </p>
-                <p>{message.text}</p>
+                <p>{chatMessage}</p>
             </div>
         );
     };
 
-    const renderEventMessage = () => {
-        return (
-            <div className="message message-bot text-center">
-                <p>{message.text}</p>
-            </div>
-        );
-    };
-
-    return (
-        <>
-            {message.type === SOCKET_EVENTS.CHAT_BOT
-                ? renderEventMessage()
-                : renderChatMessage()}
-        </>
-    );
+    return <>{renderChatMessage()}</>;
 };
 
 export default ChatMessage;

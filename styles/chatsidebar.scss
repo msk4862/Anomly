@@ -28,12 +28,13 @@
 
     .btn {
         outline: none;
+        border: none;
         font-size: 1.25rem;
         color: $font-white;
         background-color: rgba($color: #000, $alpha: 0.125);
 
-        &:hover {
-            border-color: $font-white;
+        &:not(:disabled):focus {
+            border: none;
         }
     }
 
