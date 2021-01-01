@@ -22,12 +22,22 @@
 
 ## Getting Started
 
-```sh
-yarn dev
+> Create `.env.local` file and add AWS credentials for using S3 bucket in (see `.env.local.example` for reference).
+
+First install dependencies:
+
 ```
-***or***
-```sh
-npm run dev
+npm install
+// or
+yarn install
+```
+
+Then run using:
+
+```
+npm run start
+// or
+yarn start
 ```
 
 Runs the app in the development mode.<br />
