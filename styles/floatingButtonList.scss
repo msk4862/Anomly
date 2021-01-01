@@ -1,0 +1,35 @@
+@import "./variables";
+@import "./utils";
+
+.float-menu {
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+    right: 0;
+    list-style: none;
+    // transition:  0.2s ease-in-out;
+
+    transition-property: opacity;
+    transition-delay: 1s;
+    transform-origin: bottom;
+    transition-timing-function: ease-in-out;
+
+    label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.35rem;
+        cursor: pointer;
+    }
+
+    input {
+        display: none;
+    }
+
+    .circular-btn {
+        z-index: 1;
+        @include box-shadow(8px, #000, 0.5);
+    }
+}
+
+// .float-menu {}
