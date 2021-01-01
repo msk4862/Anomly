@@ -22,7 +22,7 @@
 
 ## Getting Started
 
-> Create `.env.local` file and add AWS credentials for using S3 bucket in (see `.env.local.example` for reference).
+> Create `.env.local` file and add AWS credentials for using S3 bucket (see `.env.local.example` for reference).
 
 First install dependencies:
 
