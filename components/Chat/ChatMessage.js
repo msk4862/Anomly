@@ -1,21 +1,61 @@
 import { useContext } from "react";
-import dayjs from "dayjs";
-import customParseFormat from "dayjs/plugin/customParseFormat";
 import { UserContext } from "./ChatHome";
 import Message from "../../utils/Message";
 import "../../styles/chatmessage.scss";
+import MessageHeader from "./MessageHeader";
 
 const ChatMessage = ({ message }) => {
-    dayjs.extend(customParseFormat);
-
     // current user
     const userInfo = useContext(UserContext);
     const { user, chatMessage, time, type } = message;
+
+    const selfClass = userInfo.username === user ? "message-chat-self" : "";
+
+    /**
+     * Render file messages using their URL
+     */
+    const renderFileMessage = () => {
+        switch (type) {
+            case Message.IMAGE:
+                return (
+                    <div
+                        className={`message message-chat message-media ${selfClass}`}>
+                        <MessageHeader
+                            isCurrentUser={selfClass === "" ? false : true}
+                            user={user}
+                            time={time}
+                        />
+                        <img
+                            className="chat-image"
+                            src={chatMessage}
+                            alt={user + " " + time}
+                        />
+                    </div>
+                );
+
+            case Message.VIDEO:
+                return (
+                    <div
+                        className={`message message-chat message-media ${selfClass}`}>
+                        <MessageHeader
+                            isCurrentUser={selfClass === "" ? false : true}
+                            user={user}
+                            time={time}
+                        />
+                        <video className="chat-video" controls>
+                            <source src={chatMessage} type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                );
+        }
+    };
 
     /**
      * Render text messages
      */
     const renderChatMessage = () => {
+        // render bot messages
         if (type === Message.BOT) {
             return (
                 <div className="message message-bot text-center">
@@ -24,26 +64,26 @@ const ChatMessage = ({ message }) => {
             );
         }
 
-        return userInfo.username === user ? (
-            <div className="message message-chat message-chat-self tri-right">
-                <p>
-                    <small>You</small>
-                    <small>{dayjs(time).format("h:m:s a")}</small>
-                </p>
-                <p>{chatMessage}</p>
-            </div>
-        ) : (
-            <div className="message message-chat tri-left">
-                <p>
-                    <small>{user}</small>
-                    <small>{dayjs(time).format("h:m:s a")}</small>
-                </p>
+        return (
+            <div className={`message message-chat ${selfClass}`}>
+                <MessageHeader
+                    isCurrentUser={selfClass === "" ? false : true}
+                    user={user}
+                    time={time}
+                />
                 <p>{chatMessage}</p>
             </div>
         );
     };
 
-    return <>{renderChatMessage()}</>;
+    return (
+        <>
+            {" "}
+            {type === Message.TEXT || type === Message.BOT
+                ? renderChatMessage()
+                : renderFileMessage()}
+        </>
+    );
 };
 
 export default ChatMessage;

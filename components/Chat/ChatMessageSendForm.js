@@ -1,9 +1,14 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 
 import "../../styles/chatmessagesendform.scss";
+import { UserContext } from "./ChatHome";
+import Message from "../../utils/Message";
 import FloatingButtonList from "./FloatingButtonList";
 
-const ChatMessageSendForm = ({ handleMessageSend }) => {
+const ChatMessageSendForm = ({ handleMessageSend, setProgress }) => {
+    // current user
+    const userInfo = useContext(UserContext);
+
     const [message, setMessage] = useState("");
     const [error, setError] = useState(null);
     const [isFloatBtnVisible, setFloatBtnVisible] = useState(false);
@@ -13,17 +18,25 @@ const ChatMessageSendForm = ({ handleMessageSend }) => {
         chatInputRef.current.focus();
     });
 
-    const onSend = (event) => {
+    // handles text messages
+    const onSendText = (event) => {
         event.preventDefault();
         const messageText = message.trim();
 
         if (messageText != "") {
-            handleMessageSend(messageText);
+            handleMessageSend(
+                new Message(userInfo.username, messageText, Message.TEXT)
+            );
             setMessage("");
             chatInputRef.current.focus();
         } else {
             validate(messageText);
         }
+    };
+
+    // handles file messages
+    const onSendFile = (url, type) => {
+        handleMessageSend(new Message(userInfo.username, url, type));
     };
 
     const toggleFloatBtnVisibility = () => {
@@ -54,9 +67,14 @@ const ChatMessageSendForm = ({ handleMessageSend }) => {
         <div className="chatsend-form">
             <form
                 className="d-flex justify-content-center align-items-center"
-                onSubmit={onSend}>
+                onSubmit={onSendText}>
                 <div className="btn-collection">
-                    <FloatingButtonList isVisible={isFloatBtnVisible} />
+                    <FloatingButtonList
+                        onSend={onSendFile}
+                        isVisible={isFloatBtnVisible}
+                        toggleVisibility={toggleFloatBtnVisibility}
+                        setProgress={setProgress}
+                    />
                     <span
                         className="circular-btn"
                         onClick={toggleFloatBtnVisibility}>

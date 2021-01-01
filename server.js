@@ -81,17 +81,18 @@ nextApp.prepare().then(() => {
             });
         });
 
-        // listen chat Message
-        socket.on(CHAT_MESSAGE, (msg) => {
+        /**
+         * listen chat Message
+         * @param  {SOCKET_EVENTS} CHAT_MESSAGE
+         * @param  {Message} message Instance of message class
+         */
+        socket.on(CHAT_MESSAGE, (message) => {
             var cur_user = getCurrentUser(socket.id);
 
-            const { username, room } = cur_user;
+            const { room } = cur_user;
 
             // emit this message to everyone
-            io.to(room).emit(
-                CHAT_MESSAGE,
-                new Message(username, msg, Message.TEXT)
-            );
+            io.to(room).emit(CHAT_MESSAGE, message);
         });
 
         // Broadcast
@@ -110,6 +111,7 @@ nextApp.prepare().then(() => {
                         Message.BOT
                     )
                 );
+                // remove user from list of current online users
                 removeUser(id);
 
                 // send room users info

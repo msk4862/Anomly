@@ -1,7 +1,7 @@
 @import "../styles//variables";
 @import "../styles//utils";
 
-.chat-page {
+.chat-section {
     @include box-shadow(10px);
     padding: 0;
 
@@ -32,6 +32,16 @@
         overflow-y: auto;
         color: $font-white;
     }
+
+    .progress {
+        z-index: 10;
+        margin-top: 0.5rem;
+        background-color: $font-light;
+
+        .progress-bar {
+            background-color: $font-dark;
+        }
+    }
 }
 
 @media only screen and (max-width: 900px) {
@@ -39,7 +49,7 @@
         max-width: 100%;
     }
 
-    .chat-page {
+    .chat-section {
         .chat-box {
             padding-left: 1rem;
             padding-right: 1rem;

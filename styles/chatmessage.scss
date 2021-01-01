@@ -42,4 +42,15 @@
             margin-left: auto;
         }
     }
+
+    &-media {
+        width: fit-content;
+
+        .chat-image {
+            max-width: 200px;
+        }
+        .char-video {
+            max-width: 250px;
+        }
+    }
 }

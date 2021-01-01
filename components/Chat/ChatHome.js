@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import io from "socket.io-client";
 
-import ChatForm from "./ChatForm";
-import ChatPage from "./ChatPage";
+import RoomForm from "./RoomForm";
+import ChatSection from "./ChatSection";
 import { SOCKET_EVENTS } from "../../utils/Constants";
 import Message from "../../utils/Message";
 
@@ -22,34 +22,20 @@ const ChatHome = () => {
     }, [socket]);
 
     /**
+     * Initializing socket
      * Handling socket events
      */
     const initSocket = () => {
         var socket = io();
 
-        const { CHAT_BOT, CHAT_MESSAGE, ROOM_USERS } = SOCKET_EVENTS;
+        const { CHAT_MESSAGE, ROOM_USERS } = SOCKET_EVENTS;
 
         // listens for incoming message from server
-        // 1. bot messages
-        // socket.on(CHAT_BOT, (message) => {
-        // const message = {
-        //     type: CHAT_BOT,
-        //     text: msg.text,
-        // };
-        //     setMessages((messages) => [...messages, message]);
-        // });
-
-        // 2. chat messages
+        // 1. chat messages
         socket.on(CHAT_MESSAGE, (message) => {
-            // const message = {
-            //     type: CHAT_MESSAGE,
-            //     user: msg.user,
-            //     time: msg.time,
-            //     text: msg.text,
-            // };
             setMessages((messages) => [...messages, message]);
         });
-        // 3. set room users
+        // 2. set room users
         socket.on(ROOM_USERS, (info) => {
             setRoomUsers(info.users);
         });
@@ -86,11 +72,9 @@ const ChatHome = () => {
 
     /**
      * Handles message sending by sending message to server
-     * @param  {String} message
+     * @param  {Message} Instance of class message
      */
     const sendMessage = (message) => {
-        event.preventDefault();
-
         // emit message to server
         socket.emit(SOCKET_EVENTS.CHAT_MESSAGE, message);
     };
@@ -98,10 +82,10 @@ const ChatHome = () => {
     return (
         <section className="chat-home">
             {!user ? (
-                <ChatForm handleSubmit={onJoin} />
+                <RoomForm handleSubmit={onJoin} />
             ) : (
                 <UserContext.Provider value={user}>
-                    <ChatPage
+                    <ChatSection
                         onSend={sendMessage}
                         roomUsers={roomUsers}
                         messages={messages}

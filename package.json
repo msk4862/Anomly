@@ -15,6 +15,7 @@
     },
     "dependencies": {
         "@zeit/next-sass": "^1.0.1",
+        "aws-sdk": "^2.817.0",
         "dayjs": "^1.9.7",
         "express": "^4.17.1",
         "next": "9.4.4",

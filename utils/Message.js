@@ -10,7 +10,10 @@ class Message {
 }
 // message types
 Message.TEXT = "text";
-Message.IMAGE = "image";
 Message.BOT = "bot";
+Message.IMAGE = "image";
+Message.VIDEO = "video";
+Message.FILE = "file";
+Message.OTHERS = "others";
 
 module.exports = Message;

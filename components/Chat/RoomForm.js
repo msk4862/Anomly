@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Link from "next/link";
-
-import "../../styles/chatform.scss";
+import "../../styles/roomForm.scss";
 
 const ChatForm = ({ handleSubmit }) => {
     const minUserNameLength = 6;
