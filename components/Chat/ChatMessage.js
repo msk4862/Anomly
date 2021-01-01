@@ -48,6 +48,25 @@ const ChatMessage = ({ message }) => {
                         </video>
                     </div>
                 );
+
+            case Message.FILE:
+                return (
+                    <div
+                        className={`message message-chat message-media ${selfClass}`}>
+                        <MessageHeader
+                            isCurrentUser={selfClass === "" ? false : true}
+                            user={user}
+                            time={time}
+                        />
+                        <a href={chatMessage} target="_blank">
+                            <img
+                                className="chat-file"
+                                src="/images/file.jpg"
+                                alt="file_preview"
+                            />
+                        </a>
+                    </div>
+                );
         }
     };
 

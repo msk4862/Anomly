@@ -1,5 +1,4 @@
 import { useState, useRef, useEffect, useContext } from "react";
-
 import "../../styles/chatmessagesendform.scss";
 import { UserContext } from "./ChatHome";
 import Message from "../../utils/Message";

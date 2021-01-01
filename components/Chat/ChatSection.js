@@ -3,9 +3,10 @@ import ChatMessage from "./ChatMessage";
 import ChatMessageSendForm from "./ChatMessageSendForm";
 import ChatSidebar from "./ChatSidebar";
 import "../../styles/chatSection.scss";
+import ProgressBar from "../ProgressBar";
 
 const ChatPage = ({ onSend, roomUsers, messages, onLeave }) => {
-    const [progress, setProgress] = useState(10);
+    const [progress, setProgress] = useState(0);
     const ChatContainerEndRef = useRef(null);
 
     const handleMessageSend = (message) => {
@@ -46,21 +47,11 @@ const ChatPage = ({ onSend, roomUsers, messages, onLeave }) => {
 
                             {/* Progress bar for any file sharing */}
                             {progress > 0 && (
-                                <div className="progress">
-                                    <div
-                                        className="progress-bar"
-                                        role="progressbar"
-                                        aria-valuenow={progress}
-                                        aria-valuemin="0"
-                                        aria-valuemax="100">
-                                        <span className="sr-only">
-                                            {progress}% Complete
-                                        </span>
-                                    </div>
-                                </div>
+                                <ProgressBar
+                                    progress={progress}
+                                    color={"#3282b8"}
+                                />
                             )}
-                            {/* End of progress bar for any file sharing */}
-
                             <div ref={ChatContainerEndRef} />
                         </div>
                     </div>

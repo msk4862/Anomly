@@ -52,5 +52,23 @@
         .char-video {
             max-width: 250px;
         }
+        .chat-file {
+            max-width: 100px;
+        }
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .message-bot {
+        width: 80%;
+    }
+
+    .message-media {
+        .chat-video {
+            max-width: 200px;
+        }
+        .chat-file {
+            max-width: 80px;
+        }
     }
 }

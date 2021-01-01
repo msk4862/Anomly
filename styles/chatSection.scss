@@ -32,16 +32,6 @@
         overflow-y: auto;
         color: $font-white;
     }
-
-    .progress {
-        z-index: 10;
-        margin-top: 0.5rem;
-        background-color: $font-light;
-
-        .progress-bar {
-            background-color: $font-dark;
-        }
-    }
 }
 
 @media only screen and (max-width: 900px) {
@@ -51,8 +41,7 @@
 
     .chat-section {
         .chat-box {
-            padding-left: 1rem;
-            padding-right: 1rem;
+            padding: 1rem 0.5rem;
         }
     }
 }

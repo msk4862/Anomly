@@ -28,7 +28,7 @@ const FloatingButtonList = ({
             .promise()
             .then(() => onSend(url, type))
             .catch((err) => console.log(err))
-            .finally(setProgress(0));
+            .finally(() => setProgress(0)); // will make uploading progress bar hidden
     };
 
     return (
