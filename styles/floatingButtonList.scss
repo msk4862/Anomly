@@ -7,12 +7,6 @@
     left: 0;
     right: 0;
     list-style: none;
-    // transition:  0.2s ease-in-out;
-
-    transition-property: opacity;
-    transition-delay: 1s;
-    transform-origin: bottom;
-    transition-timing-function: ease-in-out;
 
     label {
         display: flex;
@@ -32,4 +26,21 @@
     }
 }
 
-// .float-menu {}
+.animate-reveal {
+    @include animation(
+        $name: unfoldY,
+        $time: 0.4s,
+        $timing-func: cubic-bezier(0, 0.57, 0.41, 1.43),
+        $origin: bottom
+    );
+}
+
+.animate-hide {
+    @include animation(
+        $name: foldY,
+        $time: 0.4s,
+        $timing-func: cubic-bezier(0.78, -0.02, 0.2, 1),
+        $origin: bottom,
+        $fill-mode: forwards
+    );
+}

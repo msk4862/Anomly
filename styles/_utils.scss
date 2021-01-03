@@ -44,3 +44,46 @@
         transform: translateY(-50%);
     }
 }
+
+@mixin animation(
+    $name,
+    $origin,
+    $time,
+    $timing-func: ease-in,
+    $fill-mode: null
+) {
+    animation: $name $time $timing-func $fill-mode;
+    -webkit-animation: $name $time $timing-func $fill-mode;
+    -moz-animation: $name $time $timing-func $fill-mode;
+    transform-origin: $origin;
+}
+
+@keyframes foldX {
+    100% {
+        transform: scaleX(0);
+    }
+}
+
+@keyframes foldY {
+    100% {
+        transform: scaleY(0);
+    }
+}
+
+@keyframes unfoldX {
+    0% {
+        transform: scaleX(0);
+    }
+    100% {
+        transform: scaleX(100%);
+    }
+}
+
+@keyframes unfoldY {
+    0% {
+        transform: scaleY(0);
+    }
+    100% {
+        transform: scaleY(100%);
+    }
+}

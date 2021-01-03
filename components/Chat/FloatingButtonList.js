@@ -9,9 +9,9 @@ const FloatingButtonList = ({
     toggleVisibility,
     setProgress,
 }) => {
-    let display;
-    if (isVisible) display = "block";
-    else display = "none";
+    let animate;
+    if (isVisible) animate = "animate-reveal";
+    else animate = "animate-hide";
 
     const uploadFile = (event, type) => {
         const file = event.target.files[0];
@@ -32,7 +32,7 @@ const FloatingButtonList = ({
     };
 
     return (
-        <ul style={{ display: `${display}` }} className="float-menu ">
+        <ul className={`float-menu ${animate}`}>
             <li className="mb-3">
                 <FloatButton
                     htmlFor={"image-upload"}

@@ -1,4 +1,5 @@
-@import "../styles//variables";
+@import "variables";
+@import "utils";
 
 .message {
     width: 70%;
@@ -31,15 +32,34 @@
         color: $font-white;
         border-radius: 40px;
         background-color: $secondary-color;
+        @include animation(
+            $name: unfoldX,
+            $time: 0.5s,
+            $timing-func: cubic-bezier(0.8, -0.17, 0.27, 1.55),
+            $origin: center
+        );
     }
 
     &-chat {
         color: #1b262c;
         background-color: $font-light;
+        @include animation(
+            $name: unfoldX,
+            $time: 0.5s,
+            $timing-func: cubic-bezier(0.8, -0.17, 0.27, 1.55),
+            $origin: left
+        );
 
         &-self {
             background-color: #7fdbda;
             margin-left: auto;
+
+            @include animation(
+                $name: unfoldX,
+                $time: 0.5s,
+                $timing-func: cubic-bezier(0.8, -0.17, 0.27, 1.55),
+                $origin: right
+            );
         }
     }
 

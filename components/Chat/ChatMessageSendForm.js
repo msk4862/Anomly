@@ -67,7 +67,7 @@ const ChatMessageSendForm = ({ handleMessageSend, setProgress }) => {
             <form
                 className="d-flex justify-content-center align-items-center"
                 onSubmit={onSendText}>
-                <div className="btn-collection">
+                <div className="attachment-menu">
                     <FloatingButtonList
                         onSend={onSendFile}
                         isVisible={isFloatBtnVisible}
