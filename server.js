@@ -9,7 +9,7 @@ const nextHandler = nextApp.getRequestHandler();
 var PORT = process.env.PORT || 3000;
 
 const { SOCKET_EVENTS } = require("./utils/Constants");
-const Message = require("./utils/Message");
+const { Message, TextMessage } = require("./utils/Message");
 const {
     addUser,
     getCurrentUser,
@@ -54,7 +54,7 @@ nextApp.prepare().then(() => {
             // sent to single client connected client
             socket.emit(
                 CHAT_MESSAGE,
-                new Message(
+                new TextMessage(
                     "CHAT_BOT",
                     `Welcome to Anomly ${username}!`,
                     Message.BOT
@@ -67,7 +67,7 @@ nextApp.prepare().then(() => {
                 .to(room)
                 .emit(
                     CHAT_MESSAGE,
-                    new Message(
+                    new TextMessage(
                         "CHAT_BOT",
                         `${username} has joined the room`,
                         Message.BOT
@@ -105,7 +105,7 @@ nextApp.prepare().then(() => {
                 io.to(room).emit(
                     CHAT_MESSAGE,
                     // formatMessage(CHAT_BOT, `${username} has left the room`)
-                    new Message(
+                    new TextMessage(
                         "CHAT_BOT",
                         `${username} has left the room`,
                         Message.BOT

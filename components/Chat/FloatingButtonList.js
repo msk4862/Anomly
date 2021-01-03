@@ -1,7 +1,7 @@
 import AWS_Ops from "../../utils/AWS_S3";
 import "../../styles/floatingButtonList.scss";
 import FloatButton from "./FloatButton";
-import Message from "../../utils/Message";
+import { Message } from "../../utils/Message";
 
 const FloatingButtonList = ({
     onSend,
@@ -26,9 +26,9 @@ const FloatingButtonList = ({
                 setProgress(Math.round((evt.loaded / evt.total) * 100));
             })
             .promise()
-            .then(() => onSend(url, type))
+            .then(() => onSend(url, file.name, type))
             .catch((err) => console.log(err))
-            .finally(() => setProgress(0)); // will make uploading progress bar hidden
+            .finally(() => setProgress(0)); // this will make uploading progress bar hidden
     };
 
     return (

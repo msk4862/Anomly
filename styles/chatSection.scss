@@ -24,10 +24,7 @@
 
     .chat-box {
         @include inner-box-shadow(10px);
-        padding-top: 2rem;
-        padding-left: 2.15rem;
-        padding-right: 2.15rem;
-        padding-bottom: 1rem;
+        padding: 0.5rem 0.75rem;
         height: 80vh;
         overflow-y: auto;
         color: $font-white;
@@ -41,7 +38,7 @@
 
     .chat-section {
         .chat-box {
-            padding: 1rem 0.5rem;
+            padding: 0.5rem 0.35rem;
         }
     }
 }

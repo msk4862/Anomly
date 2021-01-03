@@ -1,20 +1,22 @@
 import { useContext } from "react";
 import { UserContext } from "./ChatHome";
-import Message from "../../utils/Message";
+import { FileMessage, Message, TextMessage } from "../../utils/Message";
 import "../../styles/chatmessage.scss";
 import MessageHeader from "./MessageHeader";
 
 const ChatMessage = ({ message }) => {
     // current user
     const userInfo = useContext(UserContext);
-    const { user, chatMessage, time, type } = message;
 
+    const { user, type, time } = message;
     const selfClass = userInfo.username === user ? "message-chat-self" : "";
 
     /**
      * Render file messages using their URL
      */
     const renderFileMessage = () => {
+        const { fileUrl, fileName } = message;
+
         switch (type) {
             case Message.IMAGE:
                 return (
@@ -27,7 +29,7 @@ const ChatMessage = ({ message }) => {
                         />
                         <img
                             className="chat-image"
-                            src={chatMessage}
+                            src={fileUrl}
                             alt={user + " " + time}
                         />
                     </div>
@@ -43,7 +45,7 @@ const ChatMessage = ({ message }) => {
                             time={time}
                         />
                         <video className="chat-video" controls>
-                            <source src={chatMessage} type="video/mp4" />
+                            <source src={fileUrl} type="video/mp4" />
                             Your browser does not support the video tag.
                         </video>
                     </div>
@@ -58,12 +60,9 @@ const ChatMessage = ({ message }) => {
                             user={user}
                             time={time}
                         />
-                        <a href={chatMessage} target="_blank">
-                            <img
-                                className="chat-file"
-                                src="/images/file.jpg"
-                                alt="file_preview"
-                            />
+                        <a className="chat-file" href={fileUrl} target="_blank">
+                            <i className="fa fa-file fa-2x mr-2"></i>
+                            <span>{fileName}</span>
                         </a>
                     </div>
                 );
@@ -74,6 +73,8 @@ const ChatMessage = ({ message }) => {
      * Render text messages
      */
     const renderChatMessage = () => {
+        const { chatMessage } = message;
+
         // render bot messages
         if (type === Message.BOT) {
             return (
@@ -97,7 +98,6 @@ const ChatMessage = ({ message }) => {
 
     return (
         <>
-            {" "}
             {type === Message.TEXT || type === Message.BOT
                 ? renderChatMessage()
                 : renderFileMessage()}

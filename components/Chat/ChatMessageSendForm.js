@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useContext } from "react";
 import "../../styles/chatmessagesendform.scss";
 import { UserContext } from "./ChatHome";
-import Message from "../../utils/Message";
+import { Message, TextMessage, FileMessage } from "../../utils/Message";
 import FloatingButtonList from "./FloatingButtonList";
 
 const ChatMessageSendForm = ({ handleMessageSend, setProgress }) => {
@@ -24,7 +24,7 @@ const ChatMessageSendForm = ({ handleMessageSend, setProgress }) => {
 
         if (messageText != "") {
             handleMessageSend(
-                new Message(userInfo.username, messageText, Message.TEXT)
+                new TextMessage(userInfo.username, messageText, Message.TEXT)
             );
             setMessage("");
             chatInputRef.current.focus();
@@ -34,8 +34,10 @@ const ChatMessageSendForm = ({ handleMessageSend, setProgress }) => {
     };
 
     // handles file messages
-    const onSendFile = (url, type) => {
-        handleMessageSend(new Message(userInfo.username, url, type));
+    const onSendFile = (url, fileName, type) => {
+        handleMessageSend(
+            new FileMessage(userInfo.username, url, fileName, type)
+        );
     };
 
     const toggleFloatBtnVisibility = () => {

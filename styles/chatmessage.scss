@@ -41,7 +41,7 @@
     }
 
     &-chat {
-        color: #1b262c;
+        color: $font-black;
         background-color: $font-light;
         @include animation(
             $name: unfoldX,
@@ -73,7 +73,8 @@
             max-width: 250px;
         }
         .chat-file {
-            max-width: 100px;
+            color: $primary-color;
+            text-decoration: underline;
         }
     }
 }
