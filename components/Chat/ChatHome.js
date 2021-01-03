@@ -80,7 +80,7 @@ const ChatHome = () => {
     };
 
     return (
-        <section className="chat-home">
+        <section style={{ height: "100vh" }}>
             {!user ? (
                 <RoomForm handleSubmit={onJoin} />
             ) : (

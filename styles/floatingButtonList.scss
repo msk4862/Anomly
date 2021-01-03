@@ -2,6 +2,7 @@
 @import "./utils";
 
 .float-menu {
+    z-index: 2;
     position: absolute;
     bottom: 1rem;
     left: 0;
@@ -25,21 +26,22 @@
     }
 }
 
-.animate-reveal {
-    @include animation(
-        $name: unfoldY,
-        $time: 0.4s,
-        $timing-func: cubic-bezier(0, 0.57, 0.41, 1.43),
-        $origin: bottom
-    );
-}
-
-.animate-hide {
-    @include animation(
-        $name: foldY,
-        $time: 0.4s,
-        $timing-func: cubic-bezier(0.78, -0.02, 0.2, 1),
-        $origin: bottom,
-        $fill-mode: forwards
-    );
+.float-menu.animate {
+    &-reveal {
+        @include animation(
+            $name: unfoldY,
+            $time: 0.4s,
+            $timing-func: cubic-bezier(0, 0.57, 0.41, 1.43),
+            $origin: bottom
+        );
+    }
+    &-hide {
+        @include animation(
+            $name: foldY,
+            $time: 0.4s,
+            $timing-func: cubic-bezier(0.78, -0.02, 0.2, 1),
+            $origin: bottom,
+            $fill-mode: forwards
+        );
+    }
 }

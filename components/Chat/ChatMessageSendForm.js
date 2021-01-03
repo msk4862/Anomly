@@ -65,7 +65,7 @@ const ChatMessageSendForm = ({ handleMessageSend, setProgress }) => {
     };
 
     return (
-        <div className="chatsend-form">
+        <div className="chatsend-form align-self-stretch">
             <form
                 className="d-flex justify-content-center align-items-center"
                 onSubmit={onSendText}>

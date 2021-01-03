@@ -2,7 +2,11 @@
 @import "./utils";
 
 .chat-sidebar {
+    align-self: stretch;
     color: $font-white;
+    z-index: 1;
+    padding-left: 1rem;
+    padding-right: 1rem;
 
     .primary-bg {
         border-radius: 10px;
@@ -24,17 +28,17 @@
         &::before {
             @include tooltip-position($top: -15px);
         }
-    }
 
-    .btn {
-        outline: none;
-        border: none;
-        font-size: 1.25rem;
-        color: $font-white;
-        background-color: rgba($color: #000, $alpha: 0.125);
-
-        &:not(:disabled):focus {
+        .btn {
+            outline: none;
             border: none;
+            font-size: 1.25rem;
+            color: $font-white;
+            background-color: rgba($color: #000, $alpha: 0.125);
+
+            &:not(:disabled):focus {
+                border: none;
+            }
         }
     }
 
@@ -44,13 +48,30 @@
         background-color: $primary-color;
         list-style: none;
         margin: 0;
-        padding: 10px;
+        padding: 0.5rem;
     }
 }
 
-/* Mobile Screen */
-@media only screen and (min-width: 576px) {
+.chat-sidebar.animate {
+    &-reveal {
+        @include animation($name: unfoldY, $time: 0.4s, $origin: top);
+    }
+
+    &-hide {
+        @include animation(
+            $name: foldY,
+            $time: 0.3s,
+            $origin: top,
+            $fill-mode: forwards
+        );
+    }
+}
+
+@media only screen and (max-width: 992px) {
     .chat-sidebar {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+
         ul {
             max-height: 50vh;
             overflow-y: auto;
@@ -74,6 +95,8 @@
 
 @media only screen and (max-width: 575px) {
     .chat-sidebar {
+        position: absolute;
+
         ul {
             overflow-x: auto;
             li {
@@ -92,6 +115,6 @@
     }
 
     ::-webkit-scrollbar {
-        height: 10px;
+        height: 5px;
     }
 }

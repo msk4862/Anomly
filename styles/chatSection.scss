@@ -2,7 +2,9 @@
 @import "../styles//utils";
 
 .chat-section {
-    @include box-shadow(10px);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
     padding: 0;
 
     > div:first-child {
@@ -25,9 +27,25 @@
     .chat-box {
         @include inner-box-shadow(10px);
         padding: 0.5rem 0.75rem;
-        height: 80vh;
+        max-height: 80vh;
         overflow-y: auto;
         color: $font-white;
+    }
+
+    .sidebar-toggle {
+        z-index: 2;
+        color: $font-dark;
+        width: 30px;
+        height: 30px;
+        padding: 2px;
+        border-radius: 20px;
+        display: none;
+        background-color: $font-white;
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        right: 15px;
+        transform: translate(-50%);
     }
 }
 
@@ -37,8 +55,29 @@
     }
 
     .chat-section {
+        img {
+            width: 150px;
+            height: 100%;
+        }
+
         .chat-box {
             padding: 0.5rem 0.35rem;
+        }
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    .chat-section {
+        img {
+            width: 100px;
+            height: 100%;
+        }
+
+        .sidebar-toggle {
+            display: block;
+        }
+        .chat-box {
+            padding: 1rem 0.35rem 0.5rem 0.35rem;
         }
     }
 }

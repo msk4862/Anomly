@@ -1,13 +1,32 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import ChatMessage from "./ChatMessage";
 import ChatMessageSendForm from "./ChatMessageSendForm";
-import ChatSidebar from "./ChatSidebar";
+import ChatSidePanel from "./ChatSidePanel";
 import "../../styles/chatSection.scss";
 import ProgressBar from "../ProgressBar";
 
-const ChatPage = ({ onSend, roomUsers, messages, onLeave }) => {
+const ChatSection = ({ onSend, roomUsers, messages, onLeave }) => {
+    const [isSidePanelVisible, setSidePanelVisibility] = useState(true);
+    const [arrowDirection, setArrowDirection] = useState("up");
     const [progress, setProgress] = useState(0);
     const ChatContainerEndRef = useRef(null);
+
+    useEffect(() => {
+        window.addEventListener("resize", () => {
+            window.innerWidth >= 575 ? setSidePanelVisibility(true) : "";
+        });
+
+        // returned function will be called on component unmount
+        return () => {
+            window.removeEventListener("resize", () => {});
+        };
+    }, []);
+
+    useEffect(() => {
+        if (isSidePanelVisible) setArrowDirection("up");
+        else setArrowDirection("down");
+        console.log(arrowDirection);
+    }, [isSidePanelVisible]);
 
     const handleMessageSend = (message) => {
         // scroll to end of message window
@@ -29,32 +48,33 @@ const ChatPage = ({ onSend, roomUsers, messages, onLeave }) => {
                 />
             </div>
 
-            <div className="row justify-centent-between align-items-start secondary-bg  m-0">
-                {/*Sidebar */}
-                <ChatSidebar roomUsers={roomUsers} />
+            <div className="row justify-centent-between align-items-start secondary-bg flex-fill m-0">
+                {/*SidePanel */}
+                <ChatSidePanel
+                    isVisible={isSidePanelVisible}
+                    roomUsers={roomUsers}
+                />
+                <button
+                    className="btn sidebar-toggle"
+                    onClick={() => setSidePanelVisibility((prev) => !prev)}>
+                    <i className={`fas fa-chevron-${arrowDirection}`}></i>
+                </button>
 
                 {/* MessageArea */}
-                <div className="col-sm-9">
-                    <div className="row justify-content-between align-items-center">
-                        <div className="chat-box white-bg col-12">
-                            {/* Message */}
-                            {messages.map((msg, index) => {
-                                return (
-                                    <ChatMessage key={index} message={msg} />
-                                );
-                            })}
-                            {/* /Message */}
+                <div
+                    className="chat-box col-sm-9 white-bg"
+                    style={{ height: "100%" }}>
+                    {/* Message */}
+                    {messages.map((msg, index) => {
+                        return <ChatMessage key={index} message={msg} />;
+                    })}
+                    {/* /Message */}
 
-                            {/* Progress bar for any file sharing */}
-                            {progress > 0 && (
-                                <ProgressBar
-                                    progress={progress}
-                                    color={"#3282b8"}
-                                />
-                            )}
-                            <div ref={ChatContainerEndRef} />
-                        </div>
-                    </div>
+                    {/* Progress bar for any file sharing */}
+                    {progress > 0 && (
+                        <ProgressBar progress={progress} color={"#3282b8"} />
+                    )}
+                    <div ref={ChatContainerEndRef} />
                 </div>
                 {/* /MessageArea */}
             </div>
@@ -66,4 +86,4 @@ const ChatPage = ({ onSend, roomUsers, messages, onLeave }) => {
     );
 };
 
-export default ChatPage;
+export default ChatSection;

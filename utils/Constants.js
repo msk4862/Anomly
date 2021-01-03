@@ -14,4 +14,5 @@ module.exports = {
         ROOM_USERS: "roomUsers",
         DISCONNECT: "disconnect",
     },
+    MIN_USERNAME_LENGTH: 6,
 };

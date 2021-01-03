@@ -25,7 +25,7 @@ class MyDocument extends Document {
                     />
                     <link
                         rel="stylesheet"
-                        href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+                        href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
                     />
                 </Head>
                 <body>

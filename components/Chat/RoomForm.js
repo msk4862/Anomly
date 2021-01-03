@@ -1,10 +1,9 @@
 import { useState } from "react";
 import Link from "next/link";
+import { MIN_USERNAME_LENGTH } from "../../utils/Constants";
 import "../../styles/roomForm.scss";
 
-const ChatForm = ({ handleSubmit }) => {
-    const minUserNameLength = 6;
-
+const RoomForm = ({ handleSubmit }) => {
     const [username, setUsername] = useState("");
     const [room, setRoom] = useState("");
     const [errors, setErrors] = useState({
@@ -49,7 +48,7 @@ const ChatForm = ({ handleSubmit }) => {
         switch (name) {
             case "username":
                 if (value.length == 0) usernameErr = "Username can't be empty!";
-                else if (value.length < minUserNameLength)
+                else if (value.length < MIN_USERNAME_LENGTH)
                     usernameErr = "Username is too short!";
                 else usernameErr = null;
                 break;
@@ -151,4 +150,4 @@ const ChatForm = ({ handleSubmit }) => {
     );
 };
 
-export default ChatForm;
+export default RoomForm;
