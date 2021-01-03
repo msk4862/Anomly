@@ -163,3 +163,28 @@ a:hover {
 ::-webkit-scrollbar-thumb:hover {
     background: $font-light;
 }
+
+@media only screen and (max-width: 992px) {
+    button.btn,
+    input.btn {
+        padding: 5px 0.25rem;
+        font-size: 1rem;
+    }
+
+    body {
+        .circular-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 30px;
+            padding: 0.2rem;
+        }
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    button.btn,
+    input.btn {
+        padding: 3px 0.25rem;
+        font-size: 0.75rem;
+    }
+}
