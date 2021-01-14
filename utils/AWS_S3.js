@@ -13,8 +13,6 @@ class AWS_Ops {
             accessKeyId: AWS_Ops.#CONFIG.AWS_KEY,
             secretAccessKey: AWS_Ops.#CONFIG.AWS_SECRET,
         });
-
-        this.fileName = "";
     }
 
     getUrl(fileName) {
