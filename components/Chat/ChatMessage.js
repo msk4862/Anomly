@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { UserContext } from "./ChatHome";
-import { FileMessage, Message, TextMessage } from "../../utils/Message";
+import { Message } from "../../utils/Message";
 import "../../styles/chatmessage.scss";
 import MessageHeader from "./MessageHeader";
 

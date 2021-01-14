@@ -25,7 +25,6 @@ const ChatSection = ({ onSend, roomUsers, messages, onLeave }) => {
     useEffect(() => {
         if (isSidePanelVisible) setArrowDirection("up");
         else setArrowDirection("down");
-        console.log(arrowDirection);
     }, [isSidePanelVisible]);
 
     const handleMessageSend = (message) => {
