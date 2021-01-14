@@ -44,15 +44,6 @@ p {
 .text-white {
     color: $font-white;
 }
-.error {
-    color: $font-error;
-
-    input[type="text"] {
-        border: 2px solid $font-error;
-        outline: none;
-    }
-}
-
 a,
 a:hover {
     color: $font-light;
@@ -66,6 +57,18 @@ a:hover {
 }
 .primary-bg {
     background-color: $primary-color;
+}
+
+// error class
+.error {
+    color: $font-error;
+    input[type="text"] {
+        border: 2px solid $font-error;
+    }
+}
+
+input.error[type="text"] {
+    border: 2px solid $font-error;
 }
 
 .btn {
