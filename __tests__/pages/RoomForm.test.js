@@ -1,11 +1,11 @@
 import React from "react";
 import { render, cleanup, fireEvent } from "@testing-library/react";
-import ChatForm from "../../components/Chat/ChatForm";
+import ChatForm from "../../components/Chat/RoomForm";
+import RoomForm from "../../components/Chat/RoomForm";
 
 afterEach(cleanup);
-
-describe("Chat form tests", () => {
-    test("Testing chat form with valid inputs", () => {
+describe("Room form tests", () => {
+    test("Testing room form with valid inputs", () => {
         const onJoin = jest.fn();
         const testUser = {
             username: "Test123",
@@ -13,7 +13,7 @@ describe("Chat form tests", () => {
         };
 
         const { container, getByText } = render(
-            <ChatForm handleSubmit={onJoin} />
+            <RoomForm handleSubmit={onJoin} />
         );
 
         const usernameInput = container.querySelectorAll("input")[0];
