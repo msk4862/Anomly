@@ -9,7 +9,7 @@ const ChatMessageSendForm = ({ handleMessageSend, setProgress }) => {
     const userInfo = useContext(UserContext);
 
     const [message, setMessage] = useState("");
-    const [error, setError] = useState(null);
+    const [error, setError] = useState("");
     const [isFloatBtnVisible, setFloatBtnVisible] = useState(false);
     const chatInputRef = useRef(null);
 
@@ -17,51 +17,36 @@ const ChatMessageSendForm = ({ handleMessageSend, setProgress }) => {
         chatInputRef.current.focus();
     });
 
+    useEffect(() => {
+        if (message.trim() !== "") setError("");
+    }, [message]);
+
     // handles text messages
     const onSendText = (event) => {
         event.preventDefault();
         const messageText = message.trim();
+        const username = userInfo ? userInfo.username : "";
 
-        if (messageText != "") {
+        if (messageText !== "") {
             handleMessageSend(
-                new TextMessage(userInfo.username, messageText, Message.TEXT)
+                new TextMessage(username, messageText, Message.TEXT)
             );
             setMessage("");
             chatInputRef.current.focus();
         } else {
-            validate(messageText);
+            setError("error");
         }
     };
 
     // handles file messages
     const onSendFile = (url, fileName, type) => {
-        handleMessageSend(
-            new FileMessage(userInfo.username, url, fileName, type)
-        );
+        const username = userInfo ? userInfo.username : "";
+
+        handleMessageSend(new FileMessage(username, url, fileName, type));
     };
 
     const toggleFloatBtnVisibility = () => {
         setFloatBtnVisible((prevState) => !prevState);
-    };
-
-    /**
-     * Validating form fields
-     * @param  {String} value
-     */
-    const validate = (value) => {
-        let messageError = null;
-        if (value === "") {
-            messageError = "Type your message!";
-        }
-        setError(messageError);
-    };
-    /**
-     * adds error class
-     * @param  {String} error
-     */
-    const addErrorClass = (error) => {
-        if (error) return "error";
-        return "";
     };
 
     return (
@@ -83,9 +68,9 @@ const ChatMessageSendForm = ({ handleMessageSend, setProgress }) => {
                     </span>
                 </div>
 
-                <div className={`flex-grow-1 ${addErrorClass(error)}`}>
+                <div className="flex-grow-1">
                     <input
-                        className="form-control"
+                        className={`form-control ${error}`}
                         ref={chatInputRef}
                         type="text"
                         placeholder="Type your message here..."
@@ -95,7 +80,7 @@ const ChatMessageSendForm = ({ handleMessageSend, setProgress }) => {
                     />
                 </div>
                 <button className="btn btn-secondary ml-1" type="submit">
-                    <i className="fa fa-send"></i>
+                    <i className="fas fa-paper-plane"></i>
                 </button>
             </form>
         </div>
