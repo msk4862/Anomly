@@ -1,4 +1,4 @@
-# Anomly ![HitCount](https://hit-badger.glitch.me/badge?page_id=msk4862.Anomly.id)
+# Anomly ![Visitors Count](https://visitor-badge.laobi.icu/badge?page_id=msk4862.Anomly)
 
 <div align="center">
     <h1>Anomly</h1>
