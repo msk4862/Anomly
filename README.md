@@ -1,7 +1,7 @@
 # Anomly ![Visitors Count](https://visitor-badge.laobi.icu/badge?page_id=msk4862.Anomly)
 
 <div align="center">
-    <h1>Anomly</h1>
+    <h1><img src="https://github.com/msk4862/Anomly/blob/master/public/images/chat-logo1.png" width="400"></h1>
     <p>
          <b>Anomly is a chat app where one can chat anonymously and can create unlimited chat rooms</b>
     </p>
