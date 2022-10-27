@@ -10,7 +10,7 @@ function Banner() {
             <section className="banner">
                 <div className="row justify-content-around align-items-center m-0">
                     <div className="col-12 col-sm-6">
-                        <div className="row justify-content-start align-items-center ml-5">
+                        <div className="row flex-column justify-content-start align-items-start ml-5">
                             <h2 className="mb-3">{DESCRIPTION}</h2>
                             <Link href="/home">
                                 <a className="btn btn-primary">
