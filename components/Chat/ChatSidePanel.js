@@ -27,7 +27,6 @@ const ChatSidebar = ({ roomUsers, isVisible }) => {
     return (
         <div
             className={`chat-sidebar secondary-bg col-sm-3 pt-3 pb-3 ${barAnimation} `}>
-            {/* <div className="row"> */}
             <div className="d-flex flex-column">
                 <h5 className="mb-3">
                     <i className="fa fa-home pr-2"></i>Room Name
@@ -54,13 +53,14 @@ const ChatSidebar = ({ roomUsers, isVisible }) => {
                 <h5 className="mt-3 mb-3">
                     <i className="fa fa-users pr-2"></i>Users
                 </h5>
-                <ul>
-                    {roomUsers.map((user) => {
-                        return <li key={user.id}>{user.username}</li>;
-                    })}
-                </ul>
+                {roomUsers?.length > 0 && (
+                    <ul>
+                        {roomUsers.map((user) => {
+                            return <li key={user.id}>{user.username}</li>;
+                        })}
+                    </ul>
+                )}
             </div>
-            {/* </div> */}
         </div>
     );
 };

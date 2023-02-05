@@ -25,8 +25,10 @@ const ChatHome = () => {
      * Initializing socket
      * Handling socket events
      */
-    const initSocket = () => {
-        var socket = io();
+    const initSocket = async () => {
+        // initialize Socket-io server
+        await fetch("/api/socket");
+        let socket = io();
 
         const { CHAT_MESSAGE, ROOM_USERS } = SOCKET_EVENTS;
 
