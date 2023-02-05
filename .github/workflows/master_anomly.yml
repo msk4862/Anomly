@@ -27,11 +27,15 @@ jobs:
                   yarn build
                   yarn test
 
+            - name: Zip all files for upload between jobs
+              # IMPORTANT: .next is a hidden folder and will NOT be included in the zip unless we specify it
+              run: zip next.zip ./* .next -qr
+
             - name: Upload artifact for deployment job
               uses: actions/upload-artifact@v2
               with:
                   name: node-app
-                  path: .next/
+                  path: next.zip
 
     deploy:
         runs-on: ubuntu-latest
@@ -46,11 +50,14 @@ jobs:
               with:
                   name: node-app
 
-            - name: "Deploy to Azure Web App"
+            - name: Deploy to Azure Web App
               id: deploy-to-webapp
               uses: azure/webapps-deploy@v2
               with:
                   app-name: "anomly"
                   slot-name: "Production"
                   publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_55F64A7E9CEF47FBBFA16238408DBE05 }}
-                  package: .
+                  package: next.zip
+
+            - name: Delete Zip file
+              run: rm next.zip
