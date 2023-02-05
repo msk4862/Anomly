@@ -4,53 +4,53 @@
 name: Build and deploy Node.js app to Azure Web App - anomly
 
 on:
-  push:
-    branches:
-      - master
-  workflow_dispatch:
+    push:
+        branches:
+            - master
+    workflow_dispatch:
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+    build:
+        runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v2
+        steps:
+            - uses: actions/checkout@v2
 
-      - name: Set up Node.js version
-        uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
+            - name: Set up Node.js version
+              uses: actions/setup-node@v1
+              with:
+                  node-version: "14.x"
 
-      - name: npm install, build, and test
-        run: |
-          npm install
-          npm run build --if-present
-          npm run test --if-present
+            - name: yarn install, build, and test
+              run: |
+                  yarn install
+                  yarn build
+                  yarn test
 
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v2
-        with:
-          name: node-app
-          path: .
+            - name: Upload artifact for deployment job
+              uses: actions/upload-artifact@v2
+              with:
+                  name: node-app
+                  path: .next/
 
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    environment:
-      name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+    deploy:
+        runs-on: ubuntu-latest
+        needs: build
+        environment:
+            name: "Production"
+            url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
-    steps:
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v2
-        with:
-          name: node-app
+        steps:
+            - name: Download artifact from build job
+              uses: actions/download-artifact@v2
+              with:
+                  name: node-app
 
-      - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: 'anomly'
-          slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_55F64A7E9CEF47FBBFA16238408DBE05 }}
-          package: .
+            - name: "Deploy to Azure Web App"
+              id: deploy-to-webapp
+              uses: azure/webapps-deploy@v2
+              with:
+                  app-name: "anomly"
+                  slot-name: "Production"
+                  publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_55F64A7E9CEF47FBBFA16238408DBE05 }}
+                  package: .
