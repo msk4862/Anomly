@@ -1,0 +1,7 @@
+.git
+.github
+.results
+scripts
+.env
+.vscode
+coverage
