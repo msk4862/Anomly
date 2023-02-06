@@ -1,6 +1,8 @@
 import AWS from "aws-sdk";
 
-class AWS_Ops {
+let instance = null;
+
+class AWS_S3 {
     static #CONFIG = {
         AWS_KEY: process.env.NEXT_PUBLIC_AWS_ACCESS_KEY,
         AWS_SECRET: process.env.NEXT_PUBLIC_AWS_SECRET_ACCESS_KEY,
@@ -9,33 +11,39 @@ class AWS_Ops {
     };
 
     constructor() {
+        if (instance) {
+            throw new Error("You can only create one instance of this class!");
+        }
         AWS.config.update({
-            accessKeyId: AWS_Ops.#CONFIG.AWS_KEY,
-            secretAccessKey: AWS_Ops.#CONFIG.AWS_SECRET,
+            accessKeyId: AWS_S3.#CONFIG.AWS_KEY,
+            secretAccessKey: AWS_S3.#CONFIG.AWS_SECRET,
         });
+        this.s3 = new AWS.S3();
+        instance = this;
     }
 
-    getUrl(fileName) {
-        return `https://${AWS_Ops.#CONFIG.bucketName}.s3.${
-            AWS_Ops.#CONFIG.region
+    getFileUrl(fileName) {
+        return `https://${AWS_S3.#CONFIG.bucketName}.s3.${
+            AWS_S3.#CONFIG.region
         }.amazonaws.com/${fileName}`;
     }
 
-    uploadToS3(file) {
+    upload(file, onProgressChange) {
         const params = {
             ACL: "public-read",
             Key: file.name,
             ContentType: file.type,
             Body: file,
-            Bucket: AWS_Ops.#CONFIG.bucketName,
+            Bucket: AWS_S3.#CONFIG.bucketName,
         };
 
-        const s3 = new AWS.S3();
         return {
-            uploadHandler: s3.upload(params),
-            url: this.getUrl(file.name),
+            uploadHandler: this.s3
+                .upload(params)
+                .on("httpUploadProgress", onProgressChange),
+            url: this.getFileUrl(file.name),
         };
     }
 }
 
-export default AWS_Ops;
+export default Object.freeze(new AWS_S3());

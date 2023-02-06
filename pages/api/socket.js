@@ -9,7 +9,7 @@ import {
     getRoomUsers,
 } from "../../utils/user";
 
-const SocketHandler = (req, res) => {
+export default (req, res) => {
     if (res.socket.server.io) {
         console.log("Socket is already running");
     } else {
@@ -107,5 +107,3 @@ const SocketHandler = (req, res) => {
     }
     res.end();
 };
-
-export default SocketHandler;

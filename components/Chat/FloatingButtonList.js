@@ -1,7 +1,7 @@
-import AWS_Ops from "../../utils/AWS_S3";
 import "../../styles/floatingButtonList.scss";
 import FloatButton from "./FloatButton";
 import { Message } from "../../utils/Message";
+import { uploadToAzure } from "../../utils/uploadFiles";
 
 const FloatingButtonList = ({
     onSend,
@@ -17,17 +17,13 @@ const FloatingButtonList = ({
         const file = event.target.files[0];
         if (!file) return;
 
-        // creating an instance of AWS oprations class to use its s3 upload
-        let up = new AWS_Ops();
-        const { uploadHandler, url } = up.uploadToS3(file);
+        const { uploadPromise, fileUrl } = uploadToAzure(file, (progress) => {
+            setProgress(Math.floor(progress * 100));
+        });
 
-        uploadHandler
-            .on("httpUploadProgress", (evt) => {
-                setProgress(Math.round((evt.loaded / evt.total) * 100));
-            })
-            .promise()
-            .then(() => onSend(url, file.name, type))
-            .catch((err) => console.log(err))
+        uploadPromise
+            .then(() => onSend(fileUrl, file.name, type))
+            .catch((err) => console.error(err))
             .finally(() => setProgress(0)); // this will make uploading progress bar hidden
     };
 
