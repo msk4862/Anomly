@@ -13,6 +13,10 @@
       <img src="https://forthebadge.com/images/badges/built-with-love.svg" width="180">
 </div>
 
+### Screenshot
+<img width="1143" alt="Screenshot 2023-02-07 at 1 00 17 PM" src="https://user-images.githubusercontent.com/24875366/217179701-9c470cdc-5d6f-47a8-a27a-9d03245a0f94.png">
+
+
 ### Tools
 
 -   [NextJs](https://nextjs.org/) - React based framework for server side rendering.
@@ -21,7 +25,7 @@
 
 ## Getting Started
 
-> Create `.env.local` file and add AWS credentials for using S3 bucket (see `.env.local.example` for reference).
+> Create `.env` file and add AWS/Azure credentials for using cloud storage (see `.env.local.example` for reference).
 
 First install dependencies:
 
@@ -34,9 +38,9 @@ yarn install
 Then run using:
 
 ```
-npm run start
+npm run dev
 // or
-yarn start
+yarn dev
 ```
 
 Runs the app in the development mode.<br />
