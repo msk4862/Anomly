@@ -13,7 +13,7 @@ export class Message {
 
 export class TextMessage extends Message {
   chatMessage: string;
-  constructor(username: string, chatMessage: string, type: TMessageTypes) {
+  constructor(username: string, chatMessage: string, type: TextMessageTypes) {
     super(username, type);
     this.chatMessage = chatMessage;
   }
@@ -26,7 +26,7 @@ export class FileMessage extends Message {
     username: string,
     fileUrl: string,
     fileName: string,
-    type: TMessageTypes
+    type: FileMessageTypes
   ) {
     super(username, type);
     this.fileUrl = fileUrl;

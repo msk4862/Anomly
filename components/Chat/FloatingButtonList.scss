@@ -1,0 +1,47 @@
+@import "./variables";
+@import "./utils";
+
+.float-menu {
+  z-index: 2;
+  position: absolute;
+  bottom: 1rem;
+  left: 0;
+  right: 0;
+  list-style: none;
+
+  label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  input {
+    display: none;
+  }
+
+  .circular-btn {
+    z-index: 1;
+    @include box-shadow(8px, #000, 0.5);
+  }
+}
+
+.float-menu.animate {
+  &-reveal {
+    @include animation(
+      $name: unfoldY,
+      $time: 0.4s,
+      $timing-func: cubic-bezier(0, 0.57, 0.41, 1.43),
+      $origin: bottom
+    );
+  }
+  &-hide {
+    @include animation(
+      $name: foldY,
+      $time: 0.4s,
+      $timing-func: cubic-bezier(0.78, -0.02, 0.2, 1),
+      $origin: bottom,
+      $fill-mode: forwards
+    );
+  }
+}

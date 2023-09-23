@@ -1,0 +1,32 @@
+@import "./variables";
+@import "./utils";
+
+.chatsend-form {
+  background-color: $primary-color;
+  padding: 0.75rem 0.5rem;
+
+  form {
+    color: $font-white;
+
+    .attachment-menu {
+      position: relative;
+    }
+
+    span {
+      cursor: pointer;
+      padding: 0.5rem 0.75rem;
+      font-size: 1.5rem;
+    }
+
+    input {
+      width: 100%;
+      font-size: $base-size;
+      border: none;
+    }
+
+    .btn {
+      padding: 5px 1.5rem;
+      margin: 0;
+    }
+  }
+}
